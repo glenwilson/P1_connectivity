@@ -1,0 +1,128 @@
+\documentclass{amsart}%options: 11pt, A4paper, 
+
+\usepackage{amssymb,amsfonts,amsmath,amsthm} 
+\usepackage[left=1.5truein,right=1.5truein]{geometry}%options:
+\usepackage{pstricks,xkeyval,pst-xkey,pst-3dplot,pstricks-add}
+\usepackage{longtable}
+
+\input{Commands}
+
+\newcommand{\bispt}{\Spt_{S^1,\bbG_m}}
+\newcommand{\symspt}{\Spt^{\Sigma}}
+\newcommand{\Fpbar}{\overline{\bbF}_p}
+
+\begin{document}
+
+\section{Voevodsky's connectivity theorem for $\bbP^1$-spectra}
+
+
+\begin{thebibliography}{OOOO}
+    \bibitem[A-1974]{Adams} Adams, J.F., {\it Stable Homotopy and
+    Generalized Homology.} Chicago Lectures in Mathematics, (1974).
+
+    \bibitem[A-1965]{Adams-Periodicity} Adams, J.F., {\it A
+    periodicity theorem in homological
+    algebra}. Proc. Camb. Phil. Soc. (1966).
+
+    \bibitem[B]{Blander} Blander, Benjamin, {\it Local Projective
+    Model Structures on Simplicial Presheaves}. K-Theory, {\bf 24}
+  (2001) 283--301.
+
+    \bibitem[DI]{DI} Dugger, D.; Isaksen, D., {\it The motivic Adams
+    spectral sequence}.
+
+    \bibitem[DI-2005]{DI-Cell} Dugger, D.; Isaksen, D., {\it Motivic
+    cell structures.} Alg. Geom. Topol. {\bf 5} (2005), 615--652.
+
+    \bibitem[DHI]{DHI} Dugger, Dan; Hollander, Sharon; Isaksen, Dan,
+  {\it Hypercovers and simplicial presheaves}.
+
+    \bibitem[DL{\O}RV]{Nordfjordeid} Dundas, B.; Levine, M.;
+  {\O}stv{\ae}r, P.; R\"ondigs, O.; Voevodsky, V., {\it Motivic
+    Homotopy Theory}. Springer (2000).
+
+    \bibitem[FW]{Fu-Wilson} Fu, K.; Wilson, G., {\it Algorithms
+    for computing the cohomology of the motivic Steenrod algebra}, in
+  preparation.
+
+    \bibitem[G]{Geisser} Geisser, T., {\it Motivic cohomology over
+    Dedekind rings.} (2004).
+
+    \bibitem[G]{Geisser-Handbook} Geisser, T., {\it Motivic
+    Cohomology, K-Theory, and Topological Cyclic Homology.} Handbook
+  of $K$-Theory, (2005).
+
+    \bibitem[GI]{EtaLocal} Guillou, B.; Isaksen, D., {\it The
+    $\eta$-local motivic sphere}. preprint (2014).
+
+    \bibitem[Hir]{Hhorn} Phillip, Hirschhorn, {\it Model Categories
+    and Their Localization}. AMS (2003).
+
+    \bibitem[H-Mod]{H-Mod} Hovey, Mark, {\it Model Categories}.
+  online preprint (1991).
+  
+    \bibitem[H-Spt]{H-Spectra} Hovey, Mark, {\it Spectra and symmetric
+    spectra in general model categories}. journal? (2001).
+
+    \bibitem[HKO]{HKO} Hu, P.; Kriz, I.; Ormsby, K., {\it Remarks on
+    motivic homotopy theory over algebraically closed fields} (2008).
+
+    \bibitem[HK{\O}]{HKOst} Hoyois, Marc; Kelly, Shane; {\O}stv{\ae}r,
+  Paul Arne, {\it The motivic Steenrod algebra in positive
+    characteristic}. preprint (2013).
+
+    \bibitem[HW]{BK} Haesemeyer, Christian; Weibel, Charles. {\it The
+    Norm Residue Theorem in Motivic Cohomology}, preprint (2014).
+
+    \bibitem[J]{Jardine} Jardine, J.F., {\it Simplicial
+    presheaves}. Journal of Pure and Applied Algebra, {\bf 47} (1987)
+  35--87.
+
+    \bibitem[L]{Levine} Levine, M., {\it A comparison of motivic and
+    classical stable homotopy theories}. arXiv:1201.0283v4, (2013).
+
+    \bibitem[Mc]{McCleary} McCleary, John, {\it A User's Guide to
+    Spectral Sequences}.
+
+    \bibitem[M]{Morel} Morel, Fabien, {\it An introduction to $\bbA^1$
+    homotopy theory}.
+
+    \bibitem[M-Con]{Morel-Con} Morel, Fabien, {\it The stable $\bbA^1$
+    connectivity theorems}. preprint (2004).
+
+    \bibitem[M-2004]{Morel04} Morel, Fabien, {\it Sur les puissances
+    de l'id\'eal fondamental de l'anneau de Witt}.
+
+    \bibitem[O{\O}-1]{LowDimFields} Ormsby, Kyle; Ostvaer, Paul, {\it
+    Stable Motivic $\pi_1$ of low-dimensional
+    fields}. arxiv:1310.2970v1 (2013).
+
+    \bibitem[O{\O}-2]{MotBPInvQ} Ormsby, Kyle; Ostvaer, Paul, {\it
+    Motivic Brown-Peterson invariants of the rationals}. arxiv
+  1208.5007v2 (2013).
+
+    \bibitem[O]{MotInvPadic} Ormsby, Kyle, {\it Motivic invariants of
+    p-adic fields}. (2010).
+
+    \bibitem[P]{Pelaez} Pelaez, Pablo, {\it Multiplicative Properties
+    of the Slice Filtration}.  December 2008.
+
+    \bibitem[R]{Ravenel} Ravenel, D., {\it Complex Cobordism and
+    Stable Homotopy Groups of Spheres.} 2nd Edition, AMS (2004).
+
+    \bibitem[R{\O}]{ROst} R{\"o}ndigs, O.; {\O}stv{\ae}r, P., {\it
+    Rigidity in motivic homotopy theory.} preprint? (2007).
+
+    \bibitem[So]{Soule} Soul{\'e}, C., {\it $K$-Th{\'e}orie des
+    anneaux d'entiers de corps de nombres et cohomologie {\'e}tale.}
+  Inventiones math. (1979).
+
+    \bibitem[Sp]{Spitzweck} Spitzweck, Markus, {\it A commutative
+    $\bbP^1$-spectrum representing motivic cohomology over Dedekind
+    domains}. preprint, (2013).
+
+    \bibitem[V]{Voev} Voevodsky, Vladimir., {\it The Milnor
+    Conjecture}. December 1996. 
+
+\end{thebibliography}
+\end{document}
