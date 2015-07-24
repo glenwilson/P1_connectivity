@@ -15,24 +15,221 @@
 
 \section{Voevodsky's connectivity theorem for $\bbP^1$-spectra}
 
+The following is from an email from Aravind to me concerning the proof
+of the connectivity theorem for $\bbP^1$ spectra.
+\begin{quotation}
+  Most of the proof appears in Morel's Trieste notes (in the section
+  on the homotopy t-structure for $P^1$-spectra).  First you prove a
+  connectivity result for $P^1$-stable homotopy sheaves by using
+  Morel's $S^1$-stable connectivity theorem and studying what happens
+  under $G_m$ loops and $G_m$-suspension: suspension preserves
+  connectivity, and Morel shows that taking $G_m$-loops has the effect
+  of making a ``contraction''.  Then, you globalize this.
+\end{quotation}
+
+Our goal is to prove theorem 4.14 of \cite{Voev98}, which should be
+restated in terms of $\bbP^1$-spectra. 
+
+\begin{theorem}
+  Let $(X,x)$ be a pointed smooth scheme over $\Spec(k)$ where $k$ is
+  an infinite field. Let $(Y,y)$ be a pointed simplicial sheaf. Then
+  for any $n< \dim(X)$ 
+  \begin{equation*}
+    \SH(k)(S^{n}\wedge \bbG_m^{m}\wedge \Sigma^{\infty}X, \Sigma^{\infty} Y) = 0.
+  \end{equation*}
+
+  In particular, if we take $X = S^0$, this theorem says 
+  \begin{equation*}
+    \SH(k)(S^n\wedge\bbG_m^m\wedge \unit, \Sigma^{\infty}Y) = \tilde{\pi}_n(Y)_{-m} = 0
+  \end{equation*}
+  whenever $n<0$. 
+\end{theorem}
+
+We can formulate the theorem by using homotopy sheaves. The theorem
+says (in Morel's notation) that
+$\tilde{\pi}_{n}(\Sigma^{\infty}Y)_m(X)$ vanishes whenever
+$n < \dim(X)$.
+
+The theorem is equivalent to the vanishing of the homotopy groups
+$\pi_{n}(\Sigma^{\infty}Y)_m(X)$ when $n < \dim(X)$. (Is this right?)
+So certainly by \cite[Example 5.2.2]{Mor03} we have
+$\pi_n(\Sigma^{\infty}Y)_m = 0$ as a sheaf whenever $n < 0$. How to
+show $\pi_n(\Sigma^{\infty}Y)_m(X) = 0$ when $0\leq n < \dim X$?
+
+
+\section{Assumptions from previous lectures}
+
+\subsection{Facts about Nisnevich topology}
+
+\begin{proposition}\cite[2.4.1]{Mor04}
+  Let $M$ be a sheaf of abelian groups on $\Sm/k$, and let
+  $X\in \Sm/k$ with Krull dimension $d$. Then whenever $n > d$,
+  $H^n_{Nis}(X;M) = 0$.
+\end{proposition}
+
+\begin{proposition}\cite[2.4.1]{Mor04}
+  For any $X \in \Sm/k$, and for any $x \in X(k)$, there is an
+  isomorphism of pointed sheaves of sets in the Nisnevich topology
+  \begin{equation*}
+    X/(X-\{x\}) \cong \bbA^n / (\bbA^n - \{0\}).
+  \end{equation*}
+\end{proposition}
+
+\subsection{$S^1$-spectra}
+
+\begin{definition}
+  Let $\SH_s^{S^1}(k)$ denote the homotopy category associated to the
+  projective model structure on Nisnevich sheaves of simplicial
+  $S^1$-spectra on $\Sm/k$. (Is this the same as localizing the
+  collection of $S^1$ spectra of spaces equipped with the proj. model
+  str?)
+\end{definition}
+
+\begin{definition}
+  Let $\SH^{S^1}(k)$ denote the localization of the model category
+  associated to $\SH_s^{S^1}(k)$ at the collection of maps
+  $E \wedge \bbA^1 \to E$.
+\end{definition}
+
+\begin{remark}
+  Advantages to using alternate model category structures? E.g., use
+  presheaves instead of sheaves? Use Hovey's method of stabilizing wrt
+  Quillen functor $X \wedge -$? 
+\end{remark}
+
+\begin{definition}
+  An $S^1$-spectrum $E$ is said to be $n$-connected if for any
+  $m\leq n$, the homotopy sheaves $\pi_m(E)$ are trivial. 
+\end{definition}
+
+\begin{definition}
+  Let $\frakC$ be a triangulated category. A $t$-structure on $\frakC$
+  is a pair of full subcategories $(\frakC_{\geq 0}, \frakC_{\leq 0})$
+  which satisfies 
+  \begin{enumerate}
+      \item
+    $(\forall X \in \frakC_{\geq 0}) (\forall Y \in \frakC_{\leq 0})(
+    \Hom_{\frakC}(X, Y[-1])=0$
+      \item $\frakC_{\geq 0}[1] \subseteq \frakC_{\geq 0}$ and
+    $\frakC_{\leq 0}[-1] \subseteq \frakC_{\leq 0}$ 
+
+      \item for any $X \in \frakC$ there exists a distinguished triangle 
+    \begin{equation*}
+      Y \to X \to Z \to Y[1]
+    \end{equation*}
+    for which $Y \in \frakC_{\geq 0}$, $Z\in \frakC_{\leq 0}[-1]$..
+  \end{enumerate}
+
+  The heart of a $t$-structure is the full subcategory given by
+  $\frakC_{\geq 0} \cap \frakC_{\leq 0}$. 
+\end{definition}
+
+
+\begin{definition}[$t$-structure on $\SH_s^{S^1}(k)$]
+  Define $\SH_s^{S^1}(k)_{\geq 0}$ to be the full subcategory of
+  $\SH_s^{S^1}(k)$ consisting of objects $E$ such that $\pi_n(E)=0$
+  whenver $n<0$.
+  
+  Define $\SH_s^{S^1}(k)_{\leq 0}$ to be the full subcategory of
+  $\SH_s^{S^1}(k)$ consisting of objects $E$ such that $\pi_n(E)=0$
+  whenver $n>0$.
+\end{definition}
+
+\begin{theorem}
+  The triple
+  $(\SH_s^{S^1}(k), \SH_s^{S^1}(k)_{\geq 0}, \SH_s^{S^1}(k)_{\leq 0})$
+  is a $t$-structure on $\SH_s^{S^1}(k)$. 
+\end{theorem}
+
+% \begin{definition}
+%   An $S^1$-spectrum $F$ is $\bbA^1$
+% \end{definition}
+
+\begin{proposition}\cite[Lemma4.2.4]{Mor03}
+  The functor
+  $L^{\infty} : \Spt^{S^1}_s(k) \to \Spt^{S^1}_{s,\bbA^1}(k)$
+  identifies the $\bbA^1$-localized $S^1$ stable homotopy category
+  with the homotopy category of $\bbA^1$-local $S^1$ spectra.
+\end{proposition}
+
+\begin{theorem}[$S^1$ stable connectivity theorem]
+  Let $E \in \SH_s^{S^1}(k)$, and suppose that whenever $n < 0$ the
+  sheaf $\pi_n E = 0$. Then for all $n<0$, $\pi_n L_{\bbA^1}E = 0$.
+\end{theorem}
+
+\begin{theorem}
+  The pair $(\SH_{\geq 0}^{S^1}(k), \SH_{\leq 0}^{S^1}(k))$ is a
+  $t$-structure on the category $\SH^{S^1}(k)$. 
+\end{theorem}
+
+\begin{definition}
+  Strictly $\bbA^1$ invariant sheaf of Abelian groups.
+
+  If $M$ is strictly $\bbA^1$ invariant sheaf of groups, define the
+  Eilenberg-MacLane spectrum $HM$ associated to it. 
+\end{definition}
+
+\begin{proposition}
+  $HM$ is $\bbA^1$ local iff $M$ is strictly $\bbA^1$ invariant.
+\end{proposition}
+
+\begin{proposition}
+  The heart of the homotopy $t$ structure is equivalent to the
+  category of strictly $\bbA^1$ invariant sheaves. 
+\end{proposition}
+
+
+
+\section{Inverting $\bbG_m$; $\bbP^1$ spectra}
+
+\subsection{$\bbG_m$ suspension and loops}
+
+\subsection{Homotopy sheaves of $\underline{Hom}(\bbG_m, E)$}
+
+\begin{definition}
+  Contraction of a sheaf of pointed sets $G$ (or abelian groups $G$). $G_{-1}$
+\end{definition}
+
+\begin{theorem}\cite[Lemma 4.3.11]{Mor03}
+  $\pi_n(\underline{Hom}(\bbG_m, E)) \to \pi_{n}(E)_{-1}$ is iso. 
+\end{theorem}
+
+\begin{lemma}
+  If $M$ is a strictly $\bbA^1$ invariant sheaf of abelian groups, then
+  \begin{equation*}
+    \underline{Hom}(\bbG_m, HM) \cong H(M_{-1})
+  \end{equation*}
+\end{lemma}
+
+\begin{lemma}
+When $n\neq 0$,
+  \begin{equation}
+    [\Sigma^{\infty}\bbG_m, HM[n]]_s^{S^1} = 0.
+  \end{equation}
+
+The following map is an iso. 
+  \begin{equation}
+    [\Sigma^{\infty}\bbG_m, HM]_s^{S^1} \to [S^0, H(M_{-1})]_s^{S^1}
+  \end{equation}
+\end{lemma}
 
 \begin{thebibliography}{OOOO}
     \bibitem[A-1974]{Adams} Adams, J.F., {\it Stable Homotopy and
     Generalized Homology.} Chicago Lectures in Mathematics, (1974).
 
-    \bibitem[A-1965]{Adams-Periodicity} Adams, J.F., {\it A
-    periodicity theorem in homological
-    algebra}. Proc. Camb. Phil. Soc. (1966).
+    % \bibitem[A-1965]{Adams-Periodicity} Adams, J.F., {\it A
+    % periodicity theorem in homological
+    % algebra}. Proc. Camb. Phil. Soc. (1966).
 
     \bibitem[B]{Blander} Blander, Benjamin, {\it Local Projective
     Model Structures on Simplicial Presheaves}. K-Theory, {\bf 24}
   (2001) 283--301.
 
-    \bibitem[DI]{DI} Dugger, D.; Isaksen, D., {\it The motivic Adams
-    spectral sequence}.
+    % \bibitem[DI]{DI} Dugger, D.; Isaksen, D., {\it The motivic Adams
+    % spectral sequence}.
 
-    \bibitem[DI-2005]{DI-Cell} Dugger, D.; Isaksen, D., {\it Motivic
-    cell structures.} Alg. Geom. Topol. {\bf 5} (2005), 615--652.
+    % \bibitem[DI-2005]{DI-Cell} Dugger, D.; Isaksen, D., {\it Motivic
+    % cell structures.} Alg. Geom. Topol. {\bf 5} (2005), 615--652.
 
     \bibitem[DHI]{DHI} Dugger, Dan; Hollander, Sharon; Isaksen, Dan,
   {\it Hypercovers and simplicial presheaves}.
@@ -41,19 +238,19 @@
   {\O}stv{\ae}r, P.; R\"ondigs, O.; Voevodsky, V., {\it Motivic
     Homotopy Theory}. Springer (2000).
 
-    \bibitem[FW]{Fu-Wilson} Fu, K.; Wilson, G., {\it Algorithms
-    for computing the cohomology of the motivic Steenrod algebra}, in
-  preparation.
+  %   \bibitem[FW]{Fu-Wilson} Fu, K.; Wilson, G., {\it Algorithms
+  %   for computing the cohomology of the motivic Steenrod algebra}, in
+  % preparation.
 
-    \bibitem[G]{Geisser} Geisser, T., {\it Motivic cohomology over
-    Dedekind rings.} (2004).
+  %   \bibitem[G]{Geisser} Geisser, T., {\it Motivic cohomology over
+  %   Dedekind rings.} (2004).
 
-    \bibitem[G]{Geisser-Handbook} Geisser, T., {\it Motivic
-    Cohomology, K-Theory, and Topological Cyclic Homology.} Handbook
-  of $K$-Theory, (2005).
+  %   \bibitem[G]{Geisser-Handbook} Geisser, T., {\it Motivic
+  %   Cohomology, K-Theory, and Topological Cyclic Homology.} Handbook
+  % of $K$-Theory, (2005).
 
-    \bibitem[GI]{EtaLocal} Guillou, B.; Isaksen, D., {\it The
-    $\eta$-local motivic sphere}. preprint (2014).
+  %   \bibitem[GI]{EtaLocal} Guillou, B.; Isaksen, D., {\it The
+  %   $\eta$-local motivic sphere}. preprint (2014).
 
     \bibitem[Hir]{Hhorn} Phillip, Hirschhorn, {\it Model Categories
     and Their Localization}. AMS (2003).
@@ -64,65 +261,71 @@
     \bibitem[H-Spt]{H-Spectra} Hovey, Mark, {\it Spectra and symmetric
     spectra in general model categories}. journal? (2001).
 
-    \bibitem[HKO]{HKO} Hu, P.; Kriz, I.; Ormsby, K., {\it Remarks on
-    motivic homotopy theory over algebraically closed fields} (2008).
+  %   \bibitem[HKO]{HKO} Hu, P.; Kriz, I.; Ormsby, K., {\it Remarks on
+  %   motivic homotopy theory over algebraically closed fields} (2008).
 
-    \bibitem[HK{\O}]{HKOst} Hoyois, Marc; Kelly, Shane; {\O}stv{\ae}r,
-  Paul Arne, {\it The motivic Steenrod algebra in positive
-    characteristic}. preprint (2013).
+  %   \bibitem[HK{\O}]{HKOst} Hoyois, Marc; Kelly, Shane; {\O}stv{\ae}r,
+  % Paul Arne, {\it The motivic Steenrod algebra in positive
+  %   characteristic}. preprint (2013).
 
-    \bibitem[HW]{BK} Haesemeyer, Christian; Weibel, Charles. {\it The
-    Norm Residue Theorem in Motivic Cohomology}, preprint (2014).
+  %   \bibitem[HW]{BK} Haesemeyer, Christian; Weibel, Charles. {\it The
+  %   Norm Residue Theorem in Motivic Cohomology}, preprint (2014).
 
     \bibitem[J]{Jardine} Jardine, J.F., {\it Simplicial
     presheaves}. Journal of Pure and Applied Algebra, {\bf 47} (1987)
   35--87.
 
-    \bibitem[L]{Levine} Levine, M., {\it A comparison of motivic and
-    classical stable homotopy theories}. arXiv:1201.0283v4, (2013).
+    % \bibitem[L]{Levine} Levine, M., {\it A comparison of motivic and
+    % classical stable homotopy theories}. arXiv:1201.0283v4, (2013).
 
-    \bibitem[Mc]{McCleary} McCleary, John, {\it A User's Guide to
-    Spectral Sequences}.
+    % \bibitem[Mc]{McCleary} McCleary, John, {\it A User's Guide to
+    % Spectral Sequences}.
 
-    \bibitem[M]{Morel} Morel, Fabien, {\it An introduction to $\bbA^1$
+    \bibitem[Mor03]{Mor03} Morel, Fabien, {\it An introduction to $\bbA^1$
     homotopy theory}.
 
-    \bibitem[M-Con]{Morel-Con} Morel, Fabien, {\it The stable $\bbA^1$
+    \bibitem[Mor04]{Mor04} Morel, Fabien, {\it On the motivic $\pi_0$
+    of the sphere spectrum}. NATO science series.
+
+    \bibitem[Mor05]{Mor05} Morel, Fabien, {\it The stable $\bbA^1$
     connectivity theorems}. preprint (2004).
 
-    \bibitem[M-2004]{Morel04} Morel, Fabien, {\it Sur les puissances
-    de l'id\'eal fondamental de l'anneau de Witt}.
+    % \bibitem[M-2004]{Morel04} Morel, Fabien, {\it Sur les puissances
+    % de l'id\'eal fondamental de l'anneau de Witt}.
 
-    \bibitem[O{\O}-1]{LowDimFields} Ormsby, Kyle; Ostvaer, Paul, {\it
-    Stable Motivic $\pi_1$ of low-dimensional
-    fields}. arxiv:1310.2970v1 (2013).
+    % \bibitem[O{\O}-1]{LowDimFields} Ormsby, Kyle; Ostvaer, Paul, {\it
+    % Stable Motivic $\pi_1$ of low-dimensional
+    % fields}. arxiv:1310.2970v1 (2013).
 
-    \bibitem[O{\O}-2]{MotBPInvQ} Ormsby, Kyle; Ostvaer, Paul, {\it
-    Motivic Brown-Peterson invariants of the rationals}. arxiv
-  1208.5007v2 (2013).
+  %   \bibitem[O{\O}-2]{MotBPInvQ} Ormsby, Kyle; Ostvaer, Paul, {\it
+  %   Motivic Brown-Peterson invariants of the rationals}. arxiv
+  % 1208.5007v2 (2013).
 
-    \bibitem[O]{MotInvPadic} Ormsby, Kyle, {\it Motivic invariants of
-    p-adic fields}. (2010).
+  %   \bibitem[O]{MotInvPadic} Ormsby, Kyle, {\it Motivic invariants of
+  %   p-adic fields}. (2010).
 
-    \bibitem[P]{Pelaez} Pelaez, Pablo, {\it Multiplicative Properties
-    of the Slice Filtration}.  December 2008.
+  %   \bibitem[P]{Pelaez} Pelaez, Pablo, {\it Multiplicative Properties
+  %   of the Slice Filtration}.  December 2008.
 
-    \bibitem[R]{Ravenel} Ravenel, D., {\it Complex Cobordism and
-    Stable Homotopy Groups of Spheres.} 2nd Edition, AMS (2004).
+  %   \bibitem[R]{Ravenel} Ravenel, D., {\it Complex Cobordism and
+  %   Stable Homotopy Groups of Spheres.} 2nd Edition, AMS (2004).
 
-    \bibitem[R{\O}]{ROst} R{\"o}ndigs, O.; {\O}stv{\ae}r, P., {\it
-    Rigidity in motivic homotopy theory.} preprint? (2007).
+  %   \bibitem[R{\O}]{ROst} R{\"o}ndigs, O.; {\O}stv{\ae}r, P., {\it
+  %   Rigidity in motivic homotopy theory.} preprint? (2007).
 
-    \bibitem[So]{Soule} Soul{\'e}, C., {\it $K$-Th{\'e}orie des
-    anneaux d'entiers de corps de nombres et cohomologie {\'e}tale.}
-  Inventiones math. (1979).
+  %   \bibitem[So]{Soule} Soul{\'e}, C., {\it $K$-Th{\'e}orie des
+  %   anneaux d'entiers de corps de nombres et cohomologie {\'e}tale.}
+  % Inventiones math. (1979).
 
-    \bibitem[Sp]{Spitzweck} Spitzweck, Markus, {\it A commutative
-    $\bbP^1$-spectrum representing motivic cohomology over Dedekind
-    domains}. preprint, (2013).
+  %   \bibitem[Sp]{Spitzweck} Spitzweck, Markus, {\it A commutative
+  %   $\bbP^1$-spectrum representing motivic cohomology over Dedekind
+  %   domains}. preprint, (2013).
 
-    \bibitem[V]{Voev} Voevodsky, Vladimir., {\it The Milnor
-    Conjecture}. December 1996. 
+  %   \bibitem[V]{Voev} Voevodsky, Vladimir., {\it The Milnor
+  %   Conjecture}. December 1996. 
+
+    \bibitem[Voev98]{Voev98} Voevodsky, Vladimir. {\it $\bbA^1$-Homotopy
+    Theory}. Doc. Math. J., (1998) pp. 579--604.
 
 \end{thebibliography}
 \end{document}
