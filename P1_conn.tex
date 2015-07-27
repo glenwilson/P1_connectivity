@@ -31,35 +31,49 @@ Our goal is to prove theorem 4.14 of \cite{Voev98}, which should be
 restated in terms of $\bbP^1$-spectra. 
 
 \begin{theorem}
-  Let $(X,x)$ be a pointed smooth scheme over $\Spec(k)$ where $k$ is
-  an infinite field. Let $(Y,y)$ be a pointed simplicial sheaf. Then
-  for any $n< \dim(X)$ 
+  Let $X$ be a pointed smooth scheme over $\Spec(k)$ where $k$ is an
+  infinite field. Let $\calY$ be a pointed space. Then for any
+  $n > \dim(X)$, and any integer $m$
   \begin{equation*}
-    \SH(k)(S^{n}\wedge \bbG_m^{m}\wedge \Sigma^{\infty}X, \Sigma^{\infty} Y) = 0.
+    \SH(k)(\Sigma^{\infty}X, S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} \calY) = 0.
   \end{equation*}
 
-  In particular, if we take $X = S^0$, this theorem says 
-  \begin{equation*}
-    \SH(k)(S^n\wedge\bbG_m^m\wedge \unit, \Sigma^{\infty}Y) = \tilde{\pi}_n(Y)_{-m} = 0
-  \end{equation*}
-  whenever $n<0$. 
+  % In particular, if we take $X = S^0$, this theorem says 
+  % \begin{equation*}
+  %   \SH(k)(S^n\wedge\bbG_m^m\wedge \unit, \Sigma^{\infty}Y) = \tilde{\pi}_n(Y)_{-m} = 0
+  % \end{equation*}
+  % whenever $n<0$. 
 \end{theorem}
 
-We can formulate the theorem by using homotopy sheaves. The theorem
-says (in Morel's notation) that
-$\tilde{\pi}_{n}(\Sigma^{\infty}Y)_m(X)$ vanishes whenever
-$n < \dim(X)$.
+\begin{remark}
+  We can formulate the theorem by using homotopy sheaves. Indeed, if
+  we can show that for any pointed space $\calY$ the homotopy sheaves
+  $\pi^{\bbA^1}_{n+\alpha m}(\calY)$ are $-1$ connected,
+  the result will follow, as 
+  \begin{align*}
+    \SH(k)(\Sigma^{\infty}X, S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} \calY) 
+    & = \SH(k)(S^{-n}\wedge \bbG_m^{-m} \wedge \Sigma^{\infty}X, \Sigma^{\infty} \calY)\\
+    & = \pi_{-n-m\alpha}^{\bbA^1}(X).
+  \end{align*}
+  and by the connectivity theorem, this will vanish whenever $-n < 0$,
+  i.e., whenever $n > 0$. This is a stronger statement than
+  \cite[theorem 4.14]{Voevodsky}. 
 
-The theorem is equivalent to the vanishing of the homotopy groups
-$\pi_{n}(\Sigma^{\infty}Y)_m(X)$ when $n < \dim(X)$. (Is this right?)
-So certainly by \cite[Example 5.2.2]{Mor03} we have
-$\pi_n(\Sigma^{\infty}Y)_m = 0$ as a sheaf whenever $n < 0$. How to
-show $\pi_n(\Sigma^{\infty}Y)_m(X) = 0$ when $0\leq n < \dim X$?
-
+  The line of attack is then to show that for a pointed space $\calY$,
+  the $S^1$ suspsension spectrum $\Sigma^{\infty}_s \calY$ in the
+  stable model category is $-1$ connected. Then we establish the
+  first connectivity theorem which ensures the $\bbA^1$ localization
+  of $\Sigma^{\infty}_s\calY$ is $-1$ connected. Finally, we show that
+  inverting $\bbG_m$ does not affect the connectivity, i.e.,
+  $\Sigma^{\infty}_{m}\Sigma^{\infty}_s \calY$ is again $-1$ connected. 
+\end{remark}
 
 \section{Assumptions from previous lectures}
 
 \subsection{Facts about Nisnevich topology}
+
+Points and neighborhoods. Distinguished squares determine the
+topology. Relation to etale, zariski, and fpqc topology. 
 
 \begin{proposition}\cite[2.4.1]{Mor04}
   Let $M$ be a sheaf of abelian groups on $\Sm/k$, and let
@@ -75,32 +89,327 @@ show $\pi_n(\Sigma^{\infty}Y)_m(X) = 0$ when $0\leq n < \dim X$?
   \end{equation*}
 \end{proposition}
 
+\subsection{Unstable model category $\Delta^{op} \Shv(\Sm/k,Nis)$}
+\begin{enumerate}
+    \item Don't forget the adjunction for sheafification
+  $a_{Nis} \dashv U$. i.e., to give a map $a_{Nis}\calX \to \calY$, of
+  sheaves, it is equivalent to just give a map $\calX \to U\calY$.
+
+    \item Give the unstable model category the injective model
+  structure to start. (This is Morel's choice, so we stick with it)
+
+    \item Weak equivalences: $\calX \to \calY$ iff for all $U$ the map
+  $\calX(U)\to \calY(U)$ a simplicial w.e.
+
+    \item Cofibs: $\calX \to \calY$ is a cofib. iff for any
+  $U\in \Sm/k$ the map $\calX(U) \to \calY(U)$ is a monomorphism.
+
+    \item Fibrations: what they need to be. 
+
+    \item The ass. htpy. cat. to the injective model category
+  structure is denoted $\calH_s(k)$. The pointed htpy. cat. is denoted
+  $\calH_{s,\bullet}(k)$.
+
+    \item Important properties/constructions in these categories:
+  Cartesian closed, i.e., have smash/tensor $\times$ and $\wedge$,
+  with right adjoints $\underline{Hom}$ and
+  $\underline{Hom}_{\bullet}$. Representable sheaf functor and
+  constant simplicial set functor.
+
+\begin{definition}
+  Internal hom. (Ref: P. Pelaez)
+  
+  Let $U\in \Sm/k$. Let $\Delta^n_U$ denote the simplicial sheaf given by 
+  \begin{equation*}
+    (V,m) \in \Sm/k \times \Delta^{op} \to \Sm/k(V,U) \times \Delta^n_m.
+  \end{equation*}
+  In other words, $\Delta^n_U = (rU) \times c\Delta^n$. 
+
+  Let $\calX$ and $\calY$ be spaces. The internal hom in
+  the unpointed category is given by the formula
+  \begin{equation*}
+    (U,m) \in \Sm/k\times \Delta \to \Hom_{\Delta^{op}\Shv}(X \times \Delta^{m}_U, Y).
+  \end{equation*}
+
+  How to describe the adjunction? 
+  \begin{equation*}
+    \Hom(\calX \times \calY, \calZ) \cong \Hom(\calY, \underline{Hom}(\calX, \calZ))
+  \end{equation*}
+  Certainly we may send a map
+  $g \in \Hom(\calY, \underline{Hom}(\calX, \calZ))$ to the map
+  $\eta(g)$ given by 
+  \begin{align*}
+    \eta(g)(U,n) : &\calX_n(U)\times \calY_n(U) \to \calZ_n(U) \\ 
+                   & (a,b) \to g(U,n)(U,n)(a,\id,\id).
+  \end{align*}
+
+  Why is this a bijection? 
+\end{definition}
+
+\begin{definition}
+  Internal hom in the pointed category. Consider $\calX$ and $\calY$
+  pointed spaces. For a point $x \in \calX$, there is an evaluation
+  map $ev_x : \underline{Hom}(\calX, \calY) \to \calY$, where at
+  $(U,n) \in (\Sm/k \times \Delta)^{op}$ we send
+  $g : \calX \times \Delta^n_U \to \calY$ to
+  $g(U,n)(x, \id, \id) \in \calY_n(U)$. This makes sense as we have
+  the map
+  \begin{equation*}
+    g(U,n) : \calX_n(U) \times \Sm/k(U,U) \times \Delta^n_n \to \calY_n(U).
+  \end{equation*}
+
+  The pointed internal hom $\underline{Hom}_{\bullet}(\calX, \calY)$
+  is the fiber $ev_{x}^{-1}(y)$. 
+\end{definition}
+
+\end{enumerate}
+
+
+\subsection{$\bbA^1$ localization}
+\begin{enumerate}
+    \item See \cite[Prop 2.3.3.]{Pelaez} for details on the various properties
+of fibrant objects in the unstable motivic category.
+
+
+\item 
+
+\begin{definition} A space $\calX$ is called $\bbA^1$ local if for any
+  smooth scheme $U$, the canonical map
+  \begin{equation*}
+    \Hom(rU, \calX) \to \Hom(rU\times \bbA^1, \calX)
+  \end{equation*}
+  is a bijection. 
+\end{definition}
+
+  \item 
+
+\begin{definition}
+  A map $f: \calX \to \calY$ is an $\bbA^1$ weak equivalence if 
+  \begin{equation*}
+    \Hom(\calY, \calZ) \to \Hom(\calX, \calZ)
+  \end{equation*}
+  is a bijection for every $\bbA^1$ local space $\calX$.
+\end{definition}
+
+  \item The unstable motivic homotopy category is obtained by left
+Bousfield localization of the injective model category structure on
+spaces with respect to the class of maps
+$W = W_{\bbA^1} = \{ U \times \bbA^1 \to U \st U \in \Sm/k\}$.
+
+  \item The general theory of Bousfield localization then gives a
+localization functor $L_{\bbA^1} : \calH_s(k) \to L_{W}\calH_s(k)$;
+denote the category $L_{W}\calH_s(k)$ by $\calH(k)$. The localization
+functor sends $\bbA^1$ weak equivalences to isomorphisms. 
+
+See \cite[Definition 3.3.1]{Hir}. Keep the same underlying category,
+the weak equivalences are the $\bbA^1$-local weak equivalences, do not
+change the cofibrations from the ones in the injective model
+structure on $\Delta^{op}\Shv(\Sm/k,Nis)$, and let the fibrations be
+what they need to be. 
+
+  \item Morel writes $L_{\bbA^1}$ for the (derived) functor which
+sends a space (without base point) $\calX$ to an $\bbA^1$-localizion. 
+
+  \item Morel gives an explicit construction which takes a pointed
+space $\calY$ and produces a space $L^{\infty}\calY$ which is $\bbA^1$
+local and a map $\calY \to L^{\infty}\calY$ which is an $\bbA^1$ weak
+equivalence.
+
+Let $\calY_f$ be the functorial fibrant replacement of $\calY$ with
+respect to the injective model structure. Consider $\bbA^1$ to be
+pointed at $0$. Morel defines $L^{(1)}(\calY)$ to be the cone of the
+map $ev_1 : \underline{Hom}_{\bullet}(\bbA^1, \calY_f) \to \calY_f$.
+So there is a map $\calY \to \to L^{(1)}(\calY)$ obtained from the
+trivial cofibration $\calY \to \calY_f$ and the defining map
+$\calY_f \to L^{(1)}(\calY)$. 
+
+So $L^{(1)}(-)$ is a functor with a natural transformation
+$\eta : \id \to L^{(1)}(-)$. Define by induction
+$L^{(n)}(\calY) = L^{(1)}(L^{(n-1)}(\calY))$. There is thus a directed
+system $L^{(n-1)}(\calY) \to L^{(n)}(\calY)$. Denote the
+colimit/direct limit of this directed system by $L^{\infty}(\calY)$.
+
+\begin{proposition}
+  The natural morphism $\calY \to L^{\infty}(\calY)$ is an $\bbA^1$
+  weak equivalence, and $L^{\infty}(\calY)$ is $\bbA^1$ local.
+\end{proposition}
+
+  \item So we can use the functor $L^{\infty}$ as an $\bbA^1$
+localization functor. 
+
+  \item 
+
+\begin{definition}
+  Let $\calX$ be a space. Define $\pi_0(\calX)$ to be the
+  sheaf on $\Sm/k$ associated to $U \to \pi_0(\calX(U))$. A space
+  $calX$ is called $0$-connected if and only if
+  $\pi_0(\calX)$ is the trivial sheaf. 
+
+  Let $(\calX,x)$ be a pointed space. Define
+  $\pi_n(\calX)$ to be the sheafification of the presheaf
+  on $\Sm/k$ given by
+  \begin{equation*}
+    U \to \pi_n(\calX(U)).
+  \end{equation*}
+
+  A pointed space $\calX$ is called $n$-connected if it is
+  $0$-connected and for all $i\leq n$, the sheaves
+  $\pi_i(\calX)$ are trivial.
+\end{definition}
+
+  \item 
+
+\begin{proposition}
+  Let $\calX$ be a $0$-connected simplicial sheaf. Then
+  $L^{\infty}\calX$ is also $0$-connected.
+\end{proposition}
+
+\begin{proof}
+  M.V. IHES paper? Sketch of argument? It shouldn't be too hard by
+  chasing components around.
+\end{proof}
+
+  \item For a sheaf of abelian groups $M$ on $\Sm/k$ and a natural
+number $n$, a Dold-Kan construction gives a simplifical presheaf
+$K(M,n)$. It is called the Eilenberg-MacLane spectrum of type $(M,n)$
+and has homotopy sheaves as expected:
+\begin{equation*}
+  \pi_m(K(M,n)) = \begin{cases}0 & \text{if }m\neq n \\ M & \text{if } m = n \end{cases}.
+\end{equation*}
+
+Important equation for this construction. For $X\in\Sm/k$, $M$ a sheaf
+of Abelian groups, 
+  \begin{equation*}
+    \calH_s(k)(rX, K(M,n)) \cong H^n_{Nis}(X; M).
+  \end{equation*}
+
+    \item Use square brackets to denote the maps in the unstable
+  pointed (motivic) homotopy category, i.e.,
+  $[\calX, \calY] = \calH_{\bullet}(k)(\calX, \calY)$. 
+
+  Use $\pi_n^{\bbA^1}(\calX)$ for the sheaf of homotopy
+  groups in the motivic category, i.e.,
+  $\pi^{\bbA^1}_n(\calX) =
+  \pi_n(L^{\infty}\calX)$.
+  This is also obtained by sheafifying the presheaf given by 
+  \begin{equation*}
+    U \in \Sm/k \mapsto [S^n\wedge U_+, \calX].
+  \end{equation*}
+
+\end{enumerate}
+
+\subsection{Homotopy purity, connectedness calculations}
+
+\begin{proposition}
+  Weak $n$-connectedness is equivalent to $n$-connectedness
+\end{proposition}
+
+\begin{proof}
+  Details?
+\end{proof}
+
+\begin{proposition}
+  If $V$ is an irreducible, smooth $k$-scheme, and $U \subseteq V$ is
+  a dense open subset, the space $L_{\bbA^1}(V/U)$ is $0$-connected.
+\end{proposition}
+
+\begin{proof}
+  Seems to use that local structure of spaces is given by
+  $\bbA^n/(\bbA^n-\{0\})\wedge L_+$. How do all the reductions work?
+  Also uses some results specific to working over perfect fields.
+\end{proof}
+
+
 \subsection{$S^1$-spectra}
 
 \begin{definition}
-  Let $\SH_s^{S^1}(k)$ denote the homotopy category associated to the
-  projective model structure on Nisnevich sheaves of simplicial
-  $S^1$-spectra on $\Sm/k$. (Is this the same as localizing the
-  collection of $S^1$ spectra of spaces equipped with the proj. model
-  str?)
+  Let $\Spt_s(k)$ denote the category of $S^1$-spectra of spaces
+  $\Delta^{op}\Shv(\Sm/k)$. We first endow this category with the
+  projective model structure, i.e., a map $f:E\to F$ is a weak
+  equivalence iff for any $n$ the map $f_n : E_n \to F_n$ is a w.e.; a
+  map $f : E\to F$ is a fibration iff for all $n$ the map
+  $f_n : E_n \to F_n$ is a fibration. The cofibrations are
+  characterized by the property that $f : E \to F$ is a cofib iff
+  $f_0 : E_0 \to F_0$ is a cofib and for any $n \geq 1$
+  \begin{equation*}
+    \xymatrix{
+      S^1\wedge E_{n-1} \ar[r]^-{\sigma_{n-1}} \ar[d]_{S^1\wedge f_{n-1}} & E_n \ar@(r,u)[rdd]^{f_n} \ar[d] & \\ 
+      S^1 \wedge F_{n-1} \ar[r] \ar@(d,l)[rrd]^{\sigma_{n-1}}& P.O. \ar@{{ >}{..}{>}}[rd]& \\
+      && F_n
+    } 
+  \end{equation*}
+\end{definition}
+
+This model structure does not actually invert $S^1 \wedge -$. To
+accomplish this, we must localize with respect to the stable
+equivalences.
+
+\begin{definition}
+  A map $f : E \to F$ of $S^1$-spectra is a stable equivalence iff for
+  any $n\in \bbZ$ the induced map of homotopy sheaves
+  $\pi_n(f) : \pi_n(E) \to \pi_n(F)$ is an isomorphism. 
+
+  The stable model category structure on $\Spt_s(k)$ is given by
+  declaring the weak equivalences to be the stable weak equivalences,
+  and the cofibrations to be the same as those for the projective
+  model structure. This is indeed a left Bousfield localization, but
+  we will not describe it further as such. 
+\end{definition}
+
+
+\begin{definition}
+  Let $\Spt_s^{\bbA^1}(k)$ denote the category of $S^1$ spectra
+  endowed with the stable model category structure localized at the
+  collection of maps
+  $\{\Sigma^{\infty} U_+ \wedge \bbA^1 \to \Sigma^{\infty}U_+ \st U
+  \in \Sm/k\}$. 
+
+  Let $\SH^{S^1}(k)$ denote the homotopy category associated to
+  $\Spt_s^{\bbA^1}(k)$. We will use $\SH_s^{S^1}(k)$ to denote the
+  homotopy category of $\Spt_s(k)$.
 \end{definition}
 
 \begin{definition}
-  Let $\SH^{S^1}(k)$ denote the localization of the model category
-  associated to $\SH_s^{S^1}(k)$ at the collection of maps
-  $E \wedge \bbA^1 \to E$.
-\end{definition}
+  Let $E$ be an $S^1$ spectrum of spaces. Let $\pi_n$
+  denote the sheaf obtained by taking the colimit of the directed
+  system $\pi_{n+r}(E_r)$ in $\Ab(\Sm/k,Nis)$. That is,
+  \begin{equation*}
+    \pi_n(E) = \colim_{r} \pi_{n+r}(E_r). 
+  \end{equation*}
 
-\begin{remark}
-  Advantages to using alternate model category structures? E.g., use
-  presheaves instead of sheaves? Use Hovey's method of stabilizing wrt
-  Quillen functor $X \wedge -$? 
-\end{remark}
+  In particular, for a $U \in \Sm/k$, we have 
+  \begin{equation*}
+    \pi_n(E)(U) = \colim_{r} \pi_{n+r}(E_r)(U).
+  \end{equation*}
+\end{definition}
 
 \begin{definition}
   An $S^1$-spectrum $E$ is said to be $n$-connected if for any
   $m\leq n$, the homotopy sheaves $\pi_m(E)$ are trivial. 
 \end{definition}
+
+\begin{definition}
+  There is a left Quillen functor
+  $\Sigma^{\infty}_s : \Spc_{\bullet} \to \Spt_s^{\bbA^1}(k)$ given by
+  $(\Sigma^{\infty}\calY)_n =(S^1)^{\wedge n} \wedge \calY$ with the
+  evident bonding maps. The right adjoint to this functor is given by
+  ``evaluation at $0$'', i.e., $\Omega^{\infty}(E) = E_0$.
+\end{definition}
+
+\begin{remark}
+  The right derived functor
+  $R\Omega^{\infty} : \SH^{S^1}(k) \to \calH_{\bullet}(k)$ is given by
+  the formula
+  \begin{equation*}
+    R\Omega^{\infty}(E) = \colim_i \Omega_s^{i}E_i.
+  \end{equation*}
+
+  This comes from the fact that fibrant $S^1$ spectra are exactly the
+  $\Omega$ spectra, and the description of the fibrant replacement
+  functor. 
+\end{remark}
+
+\subsection{$t$ structure}
 
 \begin{definition}
   Let $\frakC$ be a triangulated category. A $t$-structure on $\frakC$
@@ -109,7 +418,7 @@ show $\pi_n(\Sigma^{\infty}Y)_m(X) = 0$ when $0\leq n < \dim X$?
   \begin{enumerate}
       \item
     $(\forall X \in \frakC_{\geq 0}) (\forall Y \in \frakC_{\leq 0})(
-    \Hom_{\frakC}(X, Y[-1])=0$
+    \Hom_{\frakC}(X, Y[-1])=0)$
       \item $\frakC_{\geq 0}[1] \subseteq \frakC_{\geq 0}$ and
     $\frakC_{\leq 0}[-1] \subseteq \frakC_{\leq 0}$ 
 
@@ -187,7 +496,9 @@ show $\pi_n(\Sigma^{\infty}Y)_m(X) = 0$ when $0\leq n < \dim X$?
 \subsection{Homotopy sheaves of $\underline{Hom}(\bbG_m, E)$}
 
 \begin{definition}
-  Contraction of a sheaf of pointed sets $G$ (or abelian groups $G$). $G_{-1}$
+  Contraction of a sheaf of pointed sets $G$ (or abelian groups
+  $G$). $G_{-1}$ Introduce notation $G_{con}$ to help clear up
+  index confusion. 
 \end{definition}
 
 \begin{theorem}\cite[Lemma 4.3.11]{Mor03}
