@@ -188,7 +188,7 @@ of fibrant objects in the unstable motivic category.
   \begin{equation*}
     \Hom(\calY, \calZ) \to \Hom(\calX, \calZ)
   \end{equation*}
-  is a bijection for every $\bbA^1$ local space $\calX$.
+  is a bijection for every $\bbA^1$ local space $\calZ$.
 \end{definition}
 
   \item The unstable motivic homotopy category is obtained by left
@@ -219,30 +219,28 @@ Let $\calY_f$ be the functorial fibrant replacement of $\calY$ with
 respect to the injective model structure. Consider $\bbA^1$ to be
 pointed at $0$. Morel defines $L^{(1)}(\calY)$ to be the cone of the
 map $ev_1 : \underline{Hom}_{\bullet}(\bbA^1, \calY_f) \to \calY_f$.
-So there is a map $\calY \to \to L^{(1)}(\calY)$ obtained from the
+So there is a map $\calY \to L^{(1)}(\calY)$ obtained from the
 trivial cofibration $\calY \to \calY_f$ and the defining map
 $\calY_f \to L^{(1)}(\calY)$. 
 
 So $L^{(1)}(-)$ is a functor with a natural transformation
 $\eta : \id \to L^{(1)}(-)$. Define by induction
 $L^{(n)}(\calY) = L^{(1)}(L^{(n-1)}(\calY))$. There is thus a directed
-system $L^{(n-1)}(\calY) \to L^{(n)}(\calY)$. Denote the
-colimit/direct limit of this directed system by $L^{\infty}(\calY)$.
+system $L^{(n-1)}(\calY) \to L^{(n)}(\calY)$. Denote the direct
+limit/hocolim of this directed system by $L^{\infty}(\calY)$.
 
 \begin{proposition}
   The natural morphism $\calY \to L^{\infty}(\calY)$ is an $\bbA^1$
   weak equivalence, and $L^{\infty}(\calY)$ is $\bbA^1$ local.
 \end{proposition}
 
-  \item So we can use the functor $L^{\infty}$ as an $\bbA^1$
-localization functor. 
 
   \item 
 
 \begin{definition}
   Let $\calX$ be a space. Define $\pi_0(\calX)$ to be the
   sheaf on $\Sm/k$ associated to $U \to \pi_0(\calX(U))$. A space
-  $calX$ is called $0$-connected if and only if
+  $\calX$ is called $0$-connected if and only if
   $\pi_0(\calX)$ is the trivial sheaf. 
 
   Let $(\calX,x)$ be a pointed space. Define
@@ -369,10 +367,29 @@ equivalences.
   homotopy category of $\Spt_s(k)$.
 \end{definition}
 
+\begin{remark}
+  There is a functor $L^{\infty}$ on the category of $S^1$ spectra
+  which is similar to the unstable construction.
+
+  So we can use the functor $L^{\infty}$ as an $\bbA^1$ localization
+  functor. To be precise, we let $\Spt_s^{\bbA^1loc}(k)$ be the
+  subcategory of $\Spt_s(k)$ consisting of the $\bbA^1$ local
+  spectra. We may equip $\Spt_s^{\bbA^1loc}(k)$ with a model structure
+  with weak equivalences the $\bbA^1$ weak equivalences, the
+  cofibrations are the stable cofibrations, and the fibrations are
+  what they have to be.
+
+  The functor $L^{\infty} : \Spt_s(k) \to \Spt_s^{\bbA^1loc}(k)$ is
+  left adjoint to the inclusion functor, and is a left Quillen
+  functor. The homotopy category of $\Spt_s^{\bbA^1loc}(k)$ is
+  categorically equivalent to $\SH^{S^1}(k)$. \cite[Corollary
+  4.2.3]{Mor05}.
+\end{remark}
+
 \begin{definition}
-  Let $E$ be an $S^1$ spectrum of spaces. Let $\pi_n$
-  denote the sheaf obtained by taking the colimit of the directed
-  system $\pi_{n+r}(E_r)$ in $\Ab(\Sm/k,Nis)$. That is,
+  Let $E$ be an $S^1$ spectrum of spaces. Let $\pi_n$ denote the sheaf
+  obtained by taking the colimit of the directed system
+  $\pi_{n+r}(E_r)$ in $\Ab(\Sm/k,Nis)$. That is,
   \begin{equation*}
     \pi_n(E) = \colim_{r} \pi_{n+r}(E_r). 
   \end{equation*}
@@ -385,12 +402,12 @@ equivalences.
 
 \begin{definition}
   An $S^1$-spectrum $E$ is said to be $n$-connected if for any
-  $m\leq n$, the homotopy sheaves $\pi_m(E)$ are trivial. 
+  $m\leq n$, the homotopy sheaves $\pi_m(E)$ are trivial.
 \end{definition}
 
 \begin{definition}
   There is a left Quillen functor
-  $\Sigma^{\infty}_s : \Spc_{\bullet} \to \Spt_s^{\bbA^1}(k)$ given by
+  $\Sigma^{\infty}_s : \Spc_{\bullet} \to \Spt_s(k)$ given by
   $(\Sigma^{\infty}\calY)_n =(S^1)^{\wedge n} \wedge \calY$ with the
   evident bonding maps. The right adjoint to this functor is given by
   ``evaluation at $0$'', i.e., $\Omega^{\infty}(E) = E_0$.
@@ -398,7 +415,7 @@ equivalences.
 
 \begin{remark}
   The right derived functor
-  $R\Omega^{\infty} : \SH^{S^1}(k) \to \calH_{\bullet}(k)$ is given by
+  $R\Omega^{\infty} : \SH^{S^1}_s(k) \to \calH_{\bullet}(k)$ is given by
   the formula
   \begin{equation*}
     R\Omega^{\infty}(E) = \colim_i \Omega_s^{i}E_i.
@@ -409,6 +426,25 @@ equivalences.
   functor. 
 \end{remark}
 
+\begin{remark}
+  We also get a left Quillen functor
+  $ \Sigma^{\infty}_s : \Spc_{\bullet}^{\bbA^1}(k) \to
+  \Spt_s^{\bbA^1}(k)$ given by the same formula as above.
+
+  What is the fibrant replacement functor in $\Spt_s^{\bbA^1}(k)$?
+\end{remark}
+
+\begin{remark}
+  The stable homotopy category is symmetric monoidal, with smash
+  product $\wedge$ and internal hom $\underline{\Hom}$. Using
+  symmetric spectra, one can give these constructions on the category
+  of spectra.
+
+  The stable homotopy category is a triangulated category.
+
+  
+\end{remark}
+
 \subsection{$t$ structure}
 
 \begin{definition}
@@ -416,11 +452,10 @@ equivalences.
   is a pair of full subcategories $(\frakC_{\geq 0}, \frakC_{\leq 0})$
   which satisfies 
   \begin{enumerate}
-      \item
-    $(\forall X \in \frakC_{\geq 0}) (\forall Y \in \frakC_{\leq 0})(
-    \Hom_{\frakC}(X, Y[-1])=0)$
+      \item For any $X \in \frakC_{\geq 0}$ and any
+    $ Y \in \frakC_{\leq 0}$, $\Hom_{\frakC}(X, Y[-1])=0$.
       \item $\frakC_{\geq 0}[1] \subseteq \frakC_{\geq 0}$ and
-    $\frakC_{\leq 0}[-1] \subseteq \frakC_{\leq 0}$ 
+    $\frakC_{\leq 0}[-1] \subseteq \frakC_{\leq 0}$
 
       \item for any $X \in \frakC$ there exists a distinguished triangle 
     \begin{equation*}
@@ -432,7 +467,6 @@ equivalences.
   The heart of a $t$-structure is the full subcategory given by
   $\frakC_{\geq 0} \cap \frakC_{\leq 0}$. 
 \end{definition}
-
 
 \begin{definition}[$t$-structure on $\SH_s^{S^1}(k)$]
   Define $\SH_s^{S^1}(k)_{\geq 0}$ to be the full subcategory of
@@ -449,10 +483,6 @@ equivalences.
   $(\SH_s^{S^1}(k), \SH_s^{S^1}(k)_{\geq 0}, \SH_s^{S^1}(k)_{\leq 0})$
   is a $t$-structure on $\SH_s^{S^1}(k)$. 
 \end{theorem}
-
-% \begin{definition}
-%   An $S^1$-spectrum $F$ is $\bbA^1$
-% \end{definition}
 
 \begin{proposition}\cite[Lemma4.2.4]{Mor03}
   The functor
