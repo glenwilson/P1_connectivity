@@ -450,10 +450,20 @@ equivalences.
   symmetric spectra, one can give these constructions on the category
   of spectra.
 
-  The stable homotopy category is a triangulated category.
-
-  
+  The stable homotopy category is a triangulated category.  
 \end{remark}
+
+\begin{proposition}
+  Let $U \in \Sm/k$, $n\in \bbZ$, and $M \in \Ab(\Sm/k)$. Then there
+  is a canonical isomoprhism
+  \begin{equation*}
+    H^n_{Nis}(U; M) \to \SH^{S^1}(\Sigma^{\infty}U_+, HM[n]).
+  \end{equation*}
+\end{proposition}
+
+\begin{proof}
+  This is \cite[Lemma 3.2.3]{Mor05}.
+\end{proof}
 
 \subsection{$t$ structure}
 
@@ -493,6 +503,8 @@ equivalences.
   $(\SH_s^{S^1}(k), \SH_s^{S^1}(k)_{\geq 0}, \SH_s^{S^1}(k)_{\leq 0})$
   is a $t$-structure on $\SH_s^{S^1}(k)$. 
 \end{theorem}
+
+\subsection{Connectivity results}
 
 \begin{proposition}\cite[Lemma4.2.4]{Mor03}
   The functor
@@ -536,8 +548,8 @@ specified.
 
 \begin{definition}
 On the category $\Spt_s(k)$ equipped with the motivic stable model
-category structure, there is a functor $\Sigma_m(-) = \bbG_m \wedge -$
-given by $\Sigma_m(E)_n = \bbG_m \wedge E_n$ with the evident
+category structure, there is a functor $\Sigma_t(-) = \bbG_m \wedge -$
+given by $\Sigma_t(E)_n = \bbG_m \wedge E_n$ with the evident
 structure maps.
 
 Smashing with $\bbG_m$ is also a functor on the unstable category of
@@ -546,17 +558,17 @@ pointed spaces, and we give it the same name $\Sigma_m$.
 
 \begin{definition}
   The functor $\Sigma_m$ on $\Spc_{\bullet}(k)$ has a right adjoint
-  denoted $\Omega_m$. It is given by the formula
-  $\Omega_m\calX = \underline{\Hom}_{\bullet}(\bbG_m,\calX)$.
+  denoted $\Omega_t$. It is given by the formula
+  $\Omega_t\calX = \underline{\Hom}_{\bullet}(\bbG_m,\calX)$.
 
-  The functor $\Sigma_m$ on $\Spt_s^{S^1}(k)$ also has a right adjoint
-  $\Omega_m$ given by the internal hom functor, i.e.,
-  $\Omega_mE = \underline{\Hom}(\Sigma^{\infty}\bbG_{m}, E)$.
+  The functor $\Sigma_t$ on $\Spt_s^{S^1}(k)$ also has a right adjoint
+  $\Omega_t$ given by the internal hom functor, i.e.,
+  $\Omega_tE = \underline{\Hom}(\Sigma^{\infty}\bbG_{m}, E)$.
 \end{definition}
 
 \begin{proposition}
-  The functor $\Sigma_m$ is a left Quillen functor on $\Spt_s(k)$ and
-  on $\Spt_s^{\bbA^1}(k)$. Furthermore, $\Sigma_m$ is an exact functor
+  The functor $\Sigma_t$ is a left Quillen functor on $\Spt_s(k)$ and
+  on $\Spt_s^{\bbA^1}(k)$. Furthermore, $\Sigma_t$ is an exact functor
   on $\SH^{S^1}(k)$. 
 \end{proposition}
 
@@ -624,12 +636,104 @@ pointed spaces, and we give it the same name $\Sigma_m$.
 \end{proof}
 
 \begin{remark}
+  If $G$ is a sheaf of Abelian groups, we may consider $G$ as a space
+  by declaring $G_n = G$ for all $n$ and giving identity maps for the
+  structure maps. In particular, $G$ is a pointed space at $0$. 
+
+  We can then realize the contraction as a $\bbG_m$ loop space
+  $G_{-1}(X) = \underline{\Hom}_{\bullet}(\bbG_m,G)(X)$.
+\end{remark}
+
+\begin{remark}
   Construction of canonical map
   $ \pi_n(\underline{\Hom}(\bbG_m,E)) \to \pi_n(E)_{-1}$ for an $S^1$
   spectrum $E$. 
 
+  First observe that for any $U \in \Sm/k$ and any $n \in \bbZ$ there
+  is a map
+  \begin{equation*}
+    \Spt_s(k)(S^n \wedge \Sigma^{\infty}_s U_+ \wedge \Sigma^{\infty} \bbG_m, E) \times \Spc(k)(U,\bbG_m) \to \pi_0(E)(U) 
+  \end{equation*}
+  given by sending $(f, \alpha)$ to the composition
+  \begin{equation*}
+    \xymatrix{\Sigma^{\infty}_s U_+ \ar[r]^{\id \wedge \Sigma^{\infty}_s\alpha}
+      & S^n \wedge \Sigma^{\infty}_s U_+ \wedge \Sigma^{\infty}_s \bbG_m  \ar[r]
+      & E.
+    }
+  \end{equation*}
+  Hence there is a map of sheaves 
+  \begin{equation*}
+    \pi_n(\underline{\Hom}(\bbG_m, E)) \times \bbG_m \to \pi_n(E).
+  \end{equation*}
 
+  Does this map descend to the smash? Yes, since if either map is a
+  constant map, then so is the composition. 
+
+  We thus get a map of sheaves of pointed sets
+  \begin{equation*}
+    \pi_n(\underline{\Hom}(\bbG_m, E)) \wedge \bbG_m \to \pi_n(E).
+  \end{equation*}
+
+  But by the adjunction
+  $-\wedge \bbG_m \dashv \underline{\Hom}_{\bullet}(\bbG_m,-)$ on
+  $\Spc_{\bullet}(k)$ we have a morphism 
+  \begin{equation*}
+    \pi_n(\underline{\Hom}(\bbG_m, E)) \to \underline{\Hom}_{\bullet}(\bbG_m, \pi_n(E)) =\pi_n(E)_{-1}.
+  \end{equation*}
+
+  Why is it a map of sheaves of abelian groups? 
 \end{remark}
+
+\begin{remark}
+  If $E = HM$ is an Eilenberg-MacLane spectrum associated to a
+  strictly $\bbA^1$ invariant sheaf of abelian groups $M$, we show
+  \begin{equation*}
+    \pi_n(\underline{\Hom}(\bbG_m, HM)) \to \underline{\Hom}_{\bullet}(\bbG_m, \pi_n(HM)) =\pi_n(HM)_{-1}.
+  \end{equation*}
+  is an isomorphism by showing $\underline{\Hom}(\bbG_m, HM)$ is an
+  Eilenberg-MacLane spectrum. 
+\end{remark}
+
+\begin{lemma}
+  Let $M \in \Ab_{st\bbA^1}(\Sm/k)$. When $n\neq 0$,
+  \begin{equation}
+    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM[n]) = 0.
+  \end{equation}
+  
+  For $n=0$,
+  \begin{equation}
+    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) = \SH^{S^1}_s(S^0, H(M_{-1})).
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  Since $\bbP^1 = S^1 \wedge \bbG_m$ in $\calH_{\bullet}(k)$, we have
+  $\Sigma^{\infty} \bbP^1 [-1] = \Sigma^{\infty} \bbG_m$. Therefore 
+  \begin{align*}
+    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM[n]) & = \SH^{S^1}_s(k)(\Sigma^{\infty}\bbP^1 [-1], HM[n]) \\
+    & = \SH^{S^1}_s(k)(\Sigma^{\infty}\bbP^1, HM[n+1])\\
+    & = \tilde{H}^{n+1}_{Nis}(\bbP^1;M).
+  \end{align*}
+  As the cohomological dimension of $\bbP^1$ is less than or equal to
+  1, we then have $\tilde{H}^{n+1}_{Nis}(\bbP^1;M) = 0$ for all
+  $n \neq 0$.
+
+  To establish the second point, we calculate 
+  \begin{align*}
+    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) 
+    & = \pi_0 \underline{\Hom}(\bbG_m, HM)(\Spec k)\\
+    & = \colim_r \calH_{\bullet}^s(k)(S^r, \underline{\Hom}_{\bullet}(\bbG_m, K(M,r))) \\
+    & = \colim_r M_{-1}(\Spec k)\\
+    & = M_{-1} ( \Spec k)\\
+    & =\pi_0H(M_{-1})(\Spec k).
+  \end{align*}
+
+  We now know that at least at $\Spec k$, the spectra
+  $\underline{\Hom}(\bbG_m, HM)$ and $H(M_{-1})$ agree.
+
+  We now need to jazz up the proof to an equivalence of sheaves of
+  spectra by using base change arguments. How to do this carefully?
+\end{proof}
 
 \begin{lemma}
   For $E \in \pi(k)$ in the heart of the homotopy $t$-structure, the
@@ -641,33 +745,24 @@ pointed spaces, and we give it the same name $\Sigma_m$.
 \begin{proof}
   As $E\in \pi(k)$, there is some strictly $\bbA^1$ invariant sheaf
   $M$ for which $E=HM$.  We show that
-  $\underline{\Hom}(\bbG_m,HM)\to H(M_{-1})$ is a weak equivalence. To
-  do this, we show that the map induces an isomorphism on the sections
-  of any field extension $K$ of finite type over $k$. \cite[Cor
-  4.2.8]{Mor03}
+  $\underline{\Hom}(\bbG_m,HM)\to H(M_{-1})$ is a weak equivalence. 
+
+  To do this, we show that the map induces an isomorphism on the
+  sections of any field extension $K$ of finite type over
+  $k$. \cite[Cor 4.2.8]{Mor03}
 
   Details to come...
 
 \end{proof}
 
-\begin{lemma}
-  If $M$ is a strictly $\bbA^1$ invariant sheaf of abelian groups, then
-  \begin{equation*}
-    \underline{Hom}(\bbG_m, HM) \cong H(M_{-1})
-  \end{equation*}
-\end{lemma}
-
-\begin{lemma}
-When $n\neq 0$,
-  \begin{equation}
-    [\Sigma^{\infty}\bbG_m, HM[n]]_s^{S^1} = 0.
-  \end{equation}
-
-The following map is an iso. 
-  \begin{equation}
-    [\Sigma^{\infty}\bbG_m, HM]_s^{S^1} \to [S^0, H(M_{-1})]_s^{S^1}
-  \end{equation}
-\end{lemma}
+% \begin{lemma}
+%   If $M$ is a strictly $\bbA^1$ invariant sheaf of abelian groups,
+%   then the canonical map
+%   \begin{equation*}
+%     \underline{Hom}(\bbG_m, HM) \to H(M_{-1})
+%   \end{equation*}
+%   is a weak equivalence
+% \end{lemma}
 
 
 \begin{proposition}
@@ -683,15 +778,122 @@ The following map is an iso.
 
 \end{proof}
 
-\subsection{$\bbP^1$ spectra, $(S^1, \bbG_m)$ bi-spectra}
+\subsection{Inverting $\bbG_m \wedge -$; $(\bbG_m, S^1)$ bi-spectra}
 
-Goal is to invert $-\wedge \bbG_m$ on $\Spt_s(k)$. Several different
-approaches to doing this. 
+The functor $\Sigma_t$ on $\Spt_s(k)$ is a left Quillen functor. We
+may therefore apply the general machinery of \cite{H-Spt} to create a
+model category in which $\Sigma_t$ is invertible. The construction of
+Hovey may be described as $(\bbG_m, S^1)$ bispectra. 
 
-Bigraded homotopy sheaves, bigraded spheres
+\begin{definition}
+  A $(\bbG_m, S^1)$ bi-spectrum of spaces over $k$ consists of a
+  bigraded family of spaces $E_{i,j}$, $i,j\geq 0$, equipped with
+  structure maps $\sigma_{i,j} : S^1 \wedge E_{i,j} \to E_{i,j+1}$ and
+  $\mu_{i,j} : \bbG_m \wedge E_{i,j} \to E_{i+1,j}$ for which the
+  following diagram commutes .
+  \begin{equation*}
+\xymatrix{    S^1 \wedge \bbG_m \wedge E_{i,j} \ar[r]^{S^1\wedge \tau_{i,j}} 
+    \ar[d]& S^1 \wedge E_{i+1, j} \ar[dd]^{\sigma_{i+1,j}}\\
+    \bbG_m \wedge S^1 \wedge E_{i,j} \ar[d]_{\bbG_m\wedge \sigma_{i,j}}& \\
+    \bbG_m \wedge E_{i,j+1}\ar[r]^{\mu_{i,j+1}} & E_{i+1,j+1}
+}
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  Note that a $(\bbG_m,S^1)$ bispectrum is just a $\bbG_m$-spectrum of
+  $S^1-spectra$. So we may therefore equip it with the projective
+  stable model structure we get from this perspective. We may
+  therefore think of a $(\bbG_m, S^1)$ bi-spectrum $E_{i,j}$ as a
+  sequence of $S^1$ spectra $E_{i,*}$. 
+\end{remark}
+
+\begin{definition}
+  Let $E$ be a $(\bbG_m,S^1)$ bispectrum. Define the bigraded stable
+  homotopy presheaf $\tilde{\pi}_{n+ m\alpha}$ by the formula
+  \begin{equation*}
+    U \in \Sm/k \mapsto \colim_r \calH_{\bullet}(k)(S^{n+r}\wedge \bbG_m^{r+m} \wedge U_+, E_{r,r}).
+  \end{equation*}
+
+  Morel's notation is $\tilde{\pi}_n(E)_m = \tilde{\pi}_{n-m\alpha}$.
+  We may also write
+  $\tilde{\pi}_{n,m}(E) = \tilde{\pi}_{n-m+m\alpha}(E)$.
+
+  We denote the associated Nisnevich sheaf by $\pi_{n+m\alpha}(E)$. 
+\end{definition}
+
+\begin{proposition}
+  If is $E$ a $(\bbG_m, S^1)$ bispectrum, the presheaf of homotopy
+  groups may also be calculated as
+  \begin{equation*}
+    \tilde{\pi}_{n+m\alpha}(U) = \colim_{s,r} \calH_{\bullet}(k)(\bbG_m^{s+m} \wedge S^{n+r} \wedge U_+, E_{r,s}).
+  \end{equation*}
+\cite[p 217]{Nordfjordeid}
+\end{proposition}
+
+\begin{definition}
+  A morphism $f : E \to F$ of $(\bbG_m, S^1)$ bispectra is an $\bbA^1$
+  stable weak equivalence if the following induced map is an
+  isomorphism for all $U\in\Sm/k$.
+  \begin{equation*}
+    f_* : \tilde{\pi}_{n+m\alpha}(E)(U) \to \tilde{\pi}_{n+m\alpha}(F)(U)
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+  A morphism $f : E \to F$ of $(\bbG_m, S^1)$ bispectra is an $\bbA^1$
+  stable cofibration if $f_0 : E_{0,*} \to F_{0,*}$ is a cofibration
+  of $S^1$ spectra and the map $P.O. \to F_{n+1}$ is a cofibration in
+  the following diagram. 
+  \begin{equation*}
+    \xymatrix{
+      \bbG_m \wedge E_{n,*} \ar[r] \ar[d] & E_{n+1,*} \ar@(r,u)[rdd]^{f_n} \ar[d] & \\ 
+      \bbG_m \wedge F_{n,*} \ar[r] \ar@(d,l)[rrd]& P.O. \ar@{{ >}{..}{>}}[rd]& \\
+      && F_{n+1,*}
+    } 
+  \end{equation*}
+
+\end{definition}
+
+\begin{proposition}
+  The category $\Spt_{s,t}^{\bbA^1}(k)$ of $(\bbG_m, S^1)$ bispectra with
+  $\bbA^1$ stable weak equivalences and $\bbA^1$ stable cofibrations
+  is a model category. Denote the associated homotopy category of
+  $\Spt_{s,t}(k)$ by $\SH(k)$.
+\end{proposition}
+
+\begin{proposition}
+  The fibrant bi-spectra are the $\Omega_t$-spectra. \cite[Theorem
+  3.4]{H-Spectra}
+\end{proposition}
+
+\begin{proposition}
+  There is a left Quillen functor
+  $\Sigma^{\infty}_t : \Spt_s^{\bbA^1}(k) \to \Spt_{s,t}^{\bbA^1}(k)$
+  given by $(\Sigma^{\infty}_tE)_{i,j} = \bbG_m^i\wedge E_j$ with bonding maps 
+  \begin{equation*}
+    \xymatrix{
+      S^1 \wedge \bbG_m^i \wedge E_j \ar[r] & \bbG_m^i \wedge S^1 \wedge E_j \ar[r] & \bbG_m \wedge E_{j+1}
+    }
+  \end{equation*}
+  and 
+  \begin{equation*}
+    \bbG^m \wedge \bbG_m^i \wedge E_j \to \bbG_m^{i+1} E_j.
+  \end{equation*}
+
+  The right adjoint to $\Sigma^{\infty}_t$ is denoted by
+  $\Omega^{\infty}_t$ and is given by
+  $\Omega^{\infty}_t(E) = E_{0,*}$.
+
+  The right derived functor $R\Omega^{\infty}_t(E)$ is given by the formula 
+  \begin{equation*}
+    R\Omega^{\infty}_t(E) = \colim_i \Omega_t^i E_{i,*}.
+  \end{equation*}
+\end{proposition}
+
 
 Show connectivity of $S^1$ spectra is preserved by taking
-$\Sigma^{\infty}_m$.
+$\Sigma^{\infty}_t$.
 
 Prove that \cite[Definition 5.2.1]{Mor03} gives a $t$-structure on
 $\SH(k)$.
