@@ -834,7 +834,7 @@ Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 
 \begin{remark}
   Note that a $(\bbG_m,S^1)$ bispectrum is just a $\bbG_m$-spectrum of
-  $S^1-spectra$. So we may therefore equip it with the projective
+  $S^1$-spectra. So we may therefore equip it with the projective
   stable model structure we get from this perspective. We may
   therefore think of a $(\bbG_m, S^1)$ bi-spectrum $E_{i,j}$ as a
   sequence of $S^1$ spectra $E_{i,*}$. 
@@ -858,7 +858,7 @@ Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   If is $E$ a $(\bbG_m, S^1)$ bispectrum, the presheaf of homotopy
   groups may also be calculated as
   \begin{equation*}
-    \tilde{\pi}_{n+m\alpha}(U) = \colim_{s,r} \calH_{\bullet}(k)(\bbG_m^{s+m} \wedge S^{n+r} \wedge U_+, E_{r,s}).
+    \tilde{\pi}_{n+m\alpha}E(U) = \colim_{s,r} \calH_{\bullet}(k)(\bbG_m^{s+m} \wedge S^{n+r} \wedge U_+, E_{r,s}).
   \end{equation*}
 \cite[p 217]{Nordfjordeid}
 \end{proposition}
@@ -879,7 +879,7 @@ Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   the following diagram. 
   \begin{equation*}
     \xymatrix{
-      \bbG_m \wedge E_{n,*} \ar[r] \ar[d] & E_{n+1,*} \ar@(r,u)[rdd]^{f_n} \ar[d] & \\ 
+      \bbG_m \wedge E_{n,*} \ar[r] \ar[d] & E_{n+1,*} \ar@(r,u)[rdd]^{f_{n+1}} \ar[d] & \\ 
       \bbG_m \wedge F_{n,*} \ar[r] \ar@(d,l)[rrd]& P.O. \ar@{{ >}{..}{>}}[rd]& \\
       && F_{n+1,*}
     } 
@@ -891,7 +891,7 @@ Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   The category $\Spt_{s,t}^{\bbA^1}(k)$ of $(\bbG_m, S^1)$ bispectra with
   $\bbA^1$ stable weak equivalences and $\bbA^1$ stable cofibrations
   is a model category. Denote the associated homotopy category of
-  $\Spt_{s,t}(k)$ by $\SH(k)$.
+  $\Spt_{s,t}^{\bbA^1}(k)$ by $\SH(k)$.
 \end{proposition}
 
 \begin{proposition}
@@ -923,9 +923,45 @@ Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   \end{equation*}
 \end{proposition}
 
+\begin{proof}
+  
+\end{proof}
 
-Show connectivity of $S^1$ spectra is preserved by taking
-$\Sigma^{\infty}_t$.
+\subsection{Connectivity of $(\bbG_m, S^1)$ bispectra}
+
+\begin{definition}
+  A $(\bbG_m, S^1)$ bispectrum $E$ is said to be $n$-connected if for
+  all $k\leq n$ and all $m \in \bbZ$, the homotopy sheaves
+  $\pi_{k + m\alpha}E$ vanish.
+\end{definition}
+
+\begin{lemma}
+  Consider $ E =\Sigma_t^{\infty}\Sigma_s^{\infty} \calX$ for some pointed
+  space $\calX$. Then $E$ is $-1$ connected. 
+\end{lemma}
+
+\begin{proof}
+  We calculate for $n<0$
+  \begin{align*}
+    \SH(k)(S^n\wedge\bbG_m^m \wedge \Sigma^{\infty}U_+, E) & = \SH^{S^1}(k)(S^n\wedge \bbG_m^m \wedge \Sigma^{\infty}U_+, R\Omega^{\infty}_tE) \\
+    & = \SH^{S^1}(k)(S^n \wedge \Sigma^{\infty}U_+, \Omega_t^{m} \colim_i \Omega_t^i\Sigma_t^i \Sigma_s^{\infty} X)\\
+    & = \colim \SH^{S^1}(k)(S^n \wedge \Sigma^{\infty}U_+, \Omega_t^{m+i}\Sigma_t^i \Sigma_s^{\infty} X)\\
+      & = 0
+  \end{align*}
+  as $\Omega_t$ preserves connectivity, as does $\Sigma_t$ for
+  suspension spectra.
+\end{proof}
+
+\begin{proposition}
+  Let $E \in \Spt_s^{\bbA^1}(k)$. Consider
+  $\Sigma^{\infty}_t E \in \Spt_{s,t}^{\bbA^1}(k)$. If $E$ is $-1$ connected,
+  then so too is $\Sigma^{\infty}_t E$. 
+\end{proposition}
+
+\begin{proof}
+  Can I reduced this to suspension spectra by a colimit argument? 
+\end{proof}
+
 
 Prove that \cite[Definition 5.2.1]{Mor03} gives a $t$-structure on
 $\SH(k)$.
