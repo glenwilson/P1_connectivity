@@ -47,9 +47,9 @@ restated in terms of $\bbP^1$-spectra.
 
 \begin{remark}
   We can formulate the theorem by using homotopy sheaves. Indeed, if
-  we can show that for any pointed space $\calY$ the homotopy sheaves
-  $\pi^{\bbA^1}_{n+\alpha m}(\calY)$ are $-1$ connected,
-  the result will follow, as 
+  we can show that for any pointed space $\calY$ is $-1$ connected,
+  i.e., the homotopy sheaves $\pi^{\bbA^1}_{n+\alpha m}(\calY)$ vanish
+  for $n\leq -1$, the result will follow, as
   \begin{align*}
     \SH(k)(\Sigma^{\infty}X, S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} \calY) 
     & = \SH(k)(S^{-n}\wedge \bbG_m^{-m} \wedge \Sigma^{\infty}X, \Sigma^{\infty} \calY)\\
@@ -57,7 +57,7 @@ restated in terms of $\bbP^1$-spectra.
   \end{align*}
   and by the connectivity theorem, this will vanish whenever $-n < 0$,
   i.e., whenever $n > 0$. This is a stronger statement than
-  \cite[theorem 4.14]{Voevodsky}. 
+  \cite[theorem 4.14]{Voev98}. 
 
   The line of attack is then to show that for a pointed space $\calY$,
   the $S^1$ suspsension spectrum $\Sigma^{\infty}_s \calY$ in the
@@ -695,16 +695,47 @@ pointed spaces, and we give it the same name $\Sigma_m$.
 \end{remark}
 
 \begin{lemma}
-  Let $M \in \Ab_{st\bbA^1}(\Sm/k)$. When $n\neq 0$,
-  \begin{equation}
-    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM[n]) = 0.
-  \end{equation}
-  
-  For $n=0$,
-  \begin{equation}
-    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) = \SH^{S^1}_s(S^0, H(M_{-1})).
-  \end{equation}
+  Let $M \in \Ab(\Sm/k)$. Then $K(M,r)_{-1} \simeq K(M_{-1},r)$.
 \end{lemma}
+
+\begin{proof}
+  Let $X \in \Sm/k$. The simplicial set $K(M,r)_{-1}(X)$ by the fibration 
+  \begin{equation*}
+    K(M,r)_{-1}(X) \to K(M,r)(\bbG_m \times X) \to K(M,r)(X).
+  \end{equation*}
+  There is thus a long exact sequence of homotopy groups, which ammounts to
+  \begin{equation*}
+    \xymatrix{
+      \pi_rK(M,r)_{-1}(X) \ar@{{ >}{-}{>}}[r] & \pi_r K(M,r)(\bbG_m\times X) \ar[r] & \pi_r K(M,r)(X) \ar@{{}{-}{>>}}[r] & \pi_{r-1} K(M,r)_{-1}(X).
+      }
+  \end{equation*}
+  The remaining homotopy groups are evidently trivial. As
+  $\pi_r K(M,r)(\bbG_m\times X) \to \pi_r K(M,r)(X)$ is surjective, we
+  see $\pi_{r-1} K(M,r)_{-1}(X) = 0$. Therefore,
+  \begin{equation*}
+    \pi_n K(M,r)_{-1}(X) = \begin{cases}0 & \text{if } n\neq r \\ M_{-1}(X) & \text{if } n=r \end{cases}.
+  \end{equation*}
+  We conclude that $K(M,r)_{-1} \simeq K(M_{-1},r)$. 
+\end{proof}
+
+\begin{proposition}
+  % Let $M \in \Ab_{st\bbA^1}(\Sm/k)$. When $n\neq 0$,
+  % \begin{equation}
+  %   \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM[n]) = 0.
+  % \end{equation}
+  
+  % For $n=0$,
+  % \begin{equation}
+  %   \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) = \SH^{S^1}_s(S^0, H(M_{-1})).
+  % \end{equation}
+
+  For $M \in \Ab_{st\bbA^1}(\Sm/k)$, the spectrum
+  $\underline{\Hom}(\bbG_m, HM)$ is weak equivalent to $H(M_{-1})$.
+
+  % the canonical morphism
+  % $ \pi_n(\underline{\Hom}(\bbG_m, HM)) \to \pi_n(HM)_{-1}$ is an
+  % isomorphism for all $n \in \bbZ$.
+\end{proposition}
 
 \begin{proof}
   Since $\bbP^1 = S^1 \wedge \bbG_m$ in $\calH_{\bullet}(k)$, we have
@@ -718,65 +749,66 @@ pointed spaces, and we give it the same name $\Sigma_m$.
   1, we then have $\tilde{H}^{n+1}_{Nis}(\bbP^1;M) = 0$ for all
   $n \neq 0$.
 
-  To establish the second point, we calculate 
+  Now\footnote{Given the following argument, is the part before this
+    necessary? Does this argument actually work?} for $U \in \Sm/k$,
+  we calculate for $n\neq 0$
   \begin{align*}
-    \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) 
-    & = \pi_0 \underline{\Hom}(\bbG_m, HM)(\Spec k)\\
-    & = \colim_r \calH_{\bullet}^s(k)(S^r, \underline{\Hom}_{\bullet}(\bbG_m, K(M,r))) \\
-    & = \colim_r M_{-1}(\Spec k)\\
-    & = M_{-1} ( \Spec k)\\
-    & =\pi_0H(M_{-1})(\Spec k).
+\pi_n \underline{\Hom}(\bbG_m, HM)(U)    
+    & = \SH^{S^1}_s(k)(S^n \wedge \Sigma^{\infty}\bbG_m\wedge \Sigma^{\infty} U_+, HM) \\
+    & = \colim_r \calH_{\bullet}^s(k)(S^{n+r} \wedge U_+, \underline{\Hom}_{\bullet}(\bbG_m, K(M,r))) \\
+    & = \colim_r \pi_{n+r}(K(M,r)_{-1})(U)\\
+    & = \colim_r \pi_{n+r}(K(M_{-1},r))(U)\\
+    & = \colim_r 0\\
+    & = 0.
   \end{align*}
 
-  We now know that at least at $\Spec k$, the spectra
-  $\underline{\Hom}(\bbG_m, HM)$ and $H(M_{-1})$ agree.
+  To establish the second point, we calculate for $U \in \Sm/k$
+  % \begin{align*}
+  %   \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m, HM) 
+  %   & = \pi_0 \underline{\Hom}(\bbG_m, HM)(\Spec k)\\
+  %   & = \colim_r \calH_{\bullet}^s(k)(S^r, \underline{\Hom}_{\bullet}(\bbG_m, K(M,r))) \\
+  %   & = \colim_r M_{-1}(\Spec k)\\
+  %   & = M_{-1} ( \Spec k)\\
+  %   & =\pi_0H(M_{-1})(\Spec k).
+  % \end{align*}
 
-  We now need to jazz up the proof to an equivalence of sheaves of
-  spectra by using base change arguments. How to do this carefully?
+  \begin{align*}
+\pi_0 \underline{\Hom}(\bbG_m, HM)(U)    
+    & = \SH^{S^1}_s(k)(\Sigma^{\infty}\bbG_m\wedge \Sigma^{\infty} U_+, HM) \\
+    & = \colim_r \calH_{\bullet}^s(k)(S^r \wedge U_+, \underline{\Hom}_{\bullet}(\bbG_m, K(M,r))) \\
+    & = \colim_r \pi_r(K(M,r)_{-1})(U)\\
+    & = \colim_r \pi_r(K(M_{-1},r))(U)\\
+    & = \colim_r M_{-1}(U)\\
+    & = M_{-1} (U)\\
+    & =\pi_0H(M_{-1})(U).
+  \end{align*}
+
+  We now know that the associated homotopy sheaves
+  $\pi_n \underline{\Hom}(\bbG_m, HM)$ and $\pi_nH(M_{-1})$ agree for
+  all $n$. So they are weak equivalent by \cite[Lemma 3.2.5]{Mor05}.
 \end{proof}
 
-\begin{lemma}
-  For $E \in \pi(k)$ in the heart of the homotopy $t$-structure, the
-  canonical morphism
-  $ \pi_n(\underline{\Hom}(\bbG_m,E)) \to \pi_n(E)_{-1}$ is an
-  isomorphism for all $n \in \bbZ$. 
-\end{lemma}
+% \begin{proof}
+%   To do this, we show that the map induces an isomorphism on the
+%   sections of any field extension $K$ of finite type over
+%   $k$. \cite[Cor 4.2.8]{Mor03}
 
-\begin{proof}
-  As $E\in \pi(k)$, there is some strictly $\bbA^1$ invariant sheaf
-  $M$ for which $E=HM$.  We show that
-  $\underline{\Hom}(\bbG_m,HM)\to H(M_{-1})$ is a weak equivalence. 
+%   Details to come...
 
-  To do this, we show that the map induces an isomorphism on the
-  sections of any field extension $K$ of finite type over
-  $k$. \cite[Cor 4.2.8]{Mor03}
+% \end{proof}
 
-  Details to come...
-
-\end{proof}
-
-% \begin{lemma}
-%   If $M$ is a strictly $\bbA^1$ invariant sheaf of abelian groups,
-%   then the canonical map
+% \begin{proposition}
+%   If $E \in \Spt_s(k)$ is an $\bbA^1$-local spectrum, then for any
+%   $n \in \bbZ$ the canonical map
 %   \begin{equation*}
-%     \underline{Hom}(\bbG_m, HM) \to H(M_{-1})
+%     \pi_n(\underline{\Hom}(\bbG_m,E)) \to \pi_n(E)_{-1}
 %   \end{equation*}
-%   is a weak equivalence
-% \end{lemma}
+%   is an isomorphism.
+% \end{proposition}
 
+% \begin{proof}
 
-\begin{proposition}
-  If $E \in \Spt_s(k)$ is an $\bbA^1$-local spectrum, then for any
-  $n \in \bbZ$ the canonical map
-  \begin{equation*}
-    \pi_n(\underline{\Hom}(\bbG_m,E)) \to \pi_n(E)_{-1}
-  \end{equation*}
-  is an isomorphism.
-\end{proposition}
-
-\begin{proof}
-
-\end{proof}
+% \end{proof}
 
 \subsection{Inverting $\bbG_m \wedge -$; $(\bbG_m, S^1)$ bi-spectra}
 
