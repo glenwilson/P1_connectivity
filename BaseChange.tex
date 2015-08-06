@@ -46,18 +46,20 @@ restated in terms of $\bbP^1$-spectra.
 \end{theorem}
 
 \begin{remark}
-  We can formulate the theorem by using homotopy sheaves. Indeed, if
+  We can formulate the theorem by using homotopy sheaves.\footnote{No! The presheaf values may not vanish even though the sheaf is trivial.} Indeed, if
   we can show that for any pointed space $\calY$ is $-1$ connected,
   i.e., the homotopy sheaves $\pi^{\bbA^1}_{n+\alpha m}(\calY)$ vanish
-  for $n\leq -1$, the result will follow, as
-  \begin{align*}
-    \SH(k)(\Sigma^{\infty}X, S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} \calY) 
-    & = \SH(k)(S^{-n}\wedge \bbG_m^{-m} \wedge \Sigma^{\infty}X, \Sigma^{\infty} \calY)\\
-    & = \pi_{-n-m\alpha}^{\bbA^1}(X).
-  \end{align*}
-  and by the connectivity theorem, this will vanish whenever $-n < 0$,
-  i.e., whenever $n > 0$. This is a stronger statement than
-  \cite[theorem 4.14]{Voev98}. 
+  for $n\leq -1$, 
+
+% the result will follow, as
+%   \begin{align*}
+%     \SH(k)(\Sigma^{\infty}X, S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} \calY) 
+%     & = \SH(k)(S^{-n}\wedge \bbG_m^{-m} \wedge \Sigma^{\infty}X, \Sigma^{\infty} \calY)\\
+% %    & = \pi_{-n-m\alpha}^{\bbA^1}(X).
+%   \end{align*}
+%   and by the connectivity theorem, this will vanish whenever $-n < 0$,
+%   i.e., whenever $n > 0$. This is a stronger statement than
+%   \cite[theorem 4.14]{Voev98}. 
 
   The line of attack is then to show that for a pointed space $\calY$,
   the $S^1$ suspsension spectrum $\Sigma^{\infty}_s \calY$ in the
@@ -69,9 +71,9 @@ restated in terms of $\bbP^1$-spectra.
 \end{remark}
 
 \begin{remark}
-  A construction of Ayoub \cite{Ayoub} shows that this statement is
-  false over general Noetherian base schemes $S$. But is indeed true
-  over (infinite?) fields.
+  A construction of Ayoub \cite{Ayoub} shows that theorem of Voevodsky
+  is false over general Noetherian base schemes $S$. But is indeed
+  true over (infinite?) fields.
 \end{remark}
 
 \section{Assumptions from previous lectures}
@@ -323,6 +325,7 @@ of Abelian groups,
   Also uses some results specific to working over perfect fields.
 \end{proof}
 
+
 \subsection{$S^1$-spectra}
 
 \begin{definition}
@@ -552,20 +555,17 @@ We always consider $\bbG_m$ to be pointed at $1$ unless otherwise
 specified.
 
 \begin{definition}
-  On the category $\Spt_s(k)$ equipped with the motivic stable model
-  category structure, there is a functor
-  $\Sigma_t(-) = \bbG_m \wedge -$ given by
-  $\Sigma_t(E)_n = \bbG_m \wedge E_n$ with the evident structure
-  maps. In order for $\Sigma_t$ to be a left Quillen functor, we must
-  replace $\bbG_m$ with a cofibrant object. We do this, and work with
-  this object instead of $\bbG_m$. 
+On the category $\Spt_s(k)$ equipped with the motivic stable model
+category structure, there is a functor $\Sigma_t(-) = \bbG_m \wedge -$
+given by $\Sigma_t(E)_n = \bbG_m \wedge E_n$ with the evident
+structure maps.
 
-  Smashing with $\bbG_m$ is also a functor on the unstable category of
-  pointed spaces, and we give it the same name $\Sigma_m$.
+Smashing with $\bbG_m$ is also a functor on the unstable category of
+pointed spaces, and we give it the same name $\Sigma_m$.
 \end{definition}
 
 \begin{definition}
-  The functor $\Sigma_t$ on $\Spc_{\bullet}(k)$ has a right adjoint
+  The functor $\Sigma_m$ on $\Spc_{\bullet}(k)$ has a right adjoint
   denoted $\Omega_t$. It is given by the formula
   $\Omega_t\calX = \underline{\Hom}_{\bullet}(\bbG_m,\calX)$.
 
@@ -577,9 +577,9 @@ specified.
 \begin{proposition}
   The functor $\Sigma_t$ is a left Quillen functor on $\Spt_s(k)$ and
   on $\Spt_s^{\bbA^1}(k)$. Furthermore, $\Sigma_t$ is an exact functor
-  on $\SH^{S^1}(k)$, meaning it sends exact triangles to exact
-  triangles.
+  on $\SH^{S^1}(k)$. 
 \end{proposition}
+
 
 \begin{lemma}
   Let $E \in \Spt_s^{\bbA^1}(k)$ be a $-1$ connected spectrum. Then
@@ -634,11 +634,8 @@ specified.
 
 \begin{proposition}
   Contraction is an exact functor on the category
-%  $\Ab(\Sm/k,Nis)$. 
-  $\Ab_{st\bbA^1}(\Sm/k,Nis)$. 
-
-  For any sheaf $G \in \Ab(\Sm/k,Nis)$ and any $X \in \Sm/k$,
-  $G(\bbG_m\times X) = G_{-1}(X) \oplus G(X)$.
+  $\Ab(\Sm/k,Nis)$. Furthermore, for any sheaf $G \in \Ab(\Sm/k,Nis)$
+  and any $X \in \Sm/k$, $G(\bbG_m\times X) = G_{-1}(X) \oplus G(X)$.
 \end{proposition}
 
 \begin{proof}
@@ -646,24 +643,21 @@ specified.
   kernels. 
 
   To show exactness, let $F \to G \to H$ be a short exact sequence of
-  $\bbA^1$ local sheaves. We must show $F_{-1} \to G_{-1} \to H_{-1}$
-  is still exact. It suffices to check exactness at the level of
-  stalks.
+  sheaves. We must show $F_{-1} \to G_{-1} \to H_{-1}$ is still
+  exact. It suffices to check exactness at the level of stalks.
 
-  ???
-
-  % Since $\id = ev_1 \circ \pi : G(X) \to G(X\times \bbG_m) \to G(X)$,
-  % we have $ev_1 : G(-) \to G(-\times \bbG_m)$ is a surjection on all
-  % smooth schemes. Hence $ev_1$ is an epimorphism. For a Nisnevich
-  % point $x$ of $X$, The following commutative diagram then establishes
-  % the exactness of the contraction by the 3x3 lemma.
-  % \begin{equation*}
-  %   \xymatrix{ 
-  %     F_{-1,x} \ar@{{ >}{-}{>}}[d] \ar[r] & G_{-1,x} \ar@{{ >}{-}{>}}[d] \ar[r] & H_{-1, x} \ar@{{ >}{-}{>}}[d] \\
-  %     F_{(x, 1)} \ar@{{ >}{-}{>}}[r] \ar@{{}{-}{>>}}[d]& G_{(x,1)} \ar@{{}{-}{>>}}[r] \ar@{{}{-}{>>}}[d]& H_{(x,1)} \ar@{{}{-}{>>}}[d]\\
-  %     F_x \ar@{{ >}{-}{>}}[r] & G_x \ar@{{}{-}{>>}}[r]& H_x 
-  %   }
-  % \end{equation*}
+  Since $\id = ev_1 \circ \pi : G(X) \to G(X\times \bbG_m) \to G(X)$,
+  we have $ev_1 : G(-) \to G(-\times \bbG_m)$ is a surjection on all
+  smooth schemes. Hence $ev_1$ is an epimorphism. For a Nisnevich
+  point $x$ of $X$, The following commutative diagram then establishes
+  the exactness of the contraction by the 3x3 lemma.
+  \begin{equation*}
+    \xymatrix{ 
+      F_{-1,x} \ar@{{ >}{-}{>}}[d] \ar[r] & G_{-1,x} \ar@{{ >}{-}{>}}[d] \ar[r] & H_{-1, x} \ar@{{ >}{-}{>}}[d] \\
+      F_{(x, 1)} \ar@{{ >}{-}{>}}[r] \ar@{{}{-}{>>}}[d]& G_{(x,1)} \ar@{{}{-}{>>}}[r] \ar@{{}{-}{>>}}[d]& H_{(x,1)} \ar@{{}{-}{>>}}[d]\\
+      F_x \ar@{{ >}{-}{>}}[r] & G_x \ar@{{}{-}{>>}}[r]& H_x 
+    }
+  \end{equation*}
 
   The second point follows since $\pi : X \times \bbG_m \to X$ induces
   a section of the evaluation at $1$ map
@@ -746,7 +740,7 @@ specified.
 \end{remark}
 
 \begin{lemma}
-  Let $M \in \Ab_{st\bbA^1}(\Sm/k)$. Then $K(M,r)_{-1} \simeq K(M_{-1},r)$.
+  Let $M \in \Ab(\Sm/k)$. Then $K(M,r)_{-1} \simeq K(M_{-1},r)$.
 \end{lemma}
 
 \begin{proof}
@@ -1050,7 +1044,10 @@ What needs to be done:
     \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq
     0}$. Show $\SH(k)(E,F[-1])=0$. 
 
-  
+  If $E = \Sigma^{\infty}_t \tilde{E}$, then the result follows by
+  using the $t$-structure on $\SH^{S^1}(k)$. To get the result for
+  general spectra $E \in \SH(k)_{\geq 0}$, write $E$ as a colimit of 
+  suspension spectra.
 
     \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$.
   Show $E[1] \in \SH(k)_{\geq 0}$ and $F[-1] \in \SH(k)_{\leq 0}$.
