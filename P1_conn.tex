@@ -509,7 +509,7 @@ equivalences.
   $ \Sigma^{\infty}_s : \Spc_{\bullet}^{\bbA^1}(k) \to
   \Spt_s^{\bbA^1}(k)$ given by the same formula as above.
 
-  What is the fibrant replacement functor in $\Spt_s^{\bbA^1}(k)$?
+%  What is the fibrant replacement functor in $\Spt_s^{\bbA^1}(k)$?
 \end{remark}
 
 \begin{remark}
@@ -585,7 +585,7 @@ equivalences.
   define the Moore construction. 
 
   For a space $\calX$, we then define $P^{n}\calX$ to be the space
-  given by sheafification of $U \to \calX(U)^{(n)}$.
+  given by sheafification of $U \mapsto \calX(U)^{(n)}$.
 
   Now for $E$ an $S^1$-spectrum, let $E_{\leq 0}$ be the spectrum with
   $(E_{\leq 0})_n = P^n(E_n)$. The bonding maps come from the
@@ -1040,7 +1040,7 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   The equivalence
   $\bbG_m \wedge P^j(\calX) \cong P^j(\bbG_m\wedge \calX)$ follows by
   checking on stalks, and the fact that any stalk of $\bbG_m$ is just
-  a disjoint union of points. 
+  a disjoint union of points. 0 
 \end{definition}
 
 \begin{theorem}
@@ -1051,17 +1051,45 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 \begin{proof}
 What needs to be done: 
 \begin{enumerate}
-    \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$.
-  When $E$ is in the image of $\Sigma^{\infty}_t$, the result follows
-  by using the adjuction $\Sigma^{\infty}_t \dashv R\Omega^{\infty}_t$
-  and using the $t$-structure on $S^1$ spectra. The result follows by
-  writing $E$ as a homotopy colimit of suspension spectra
-  $E = \hocolim \Sigma^{\infty}_t \tilde{E}_{\alpha}$. 
+    \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$. We
+  must show $\SH(k)(E,F[-1])=0$.  When $E$ is in the image of
+  $\Sigma^{\infty}_t$, the result follows by using the adjuction
+  $\Sigma^{\infty}_t \dashv R\Omega^{\infty}_t$ and using the
+  $t$-structure on $S^1$ spectra. In particular, for $U \in \Sm/k$ we
+  have
+  $\SH(k)(S^n \wedge \bbG_m^m \wedge \Sigma^{\infty} U_+, F[-1])=0$
+  for $n\geq 0$ and $m \in \bbZ$.
+
+  For a general $E \in \SH(k)_{\geq 0}$, we may write
+  $E = \hocolim E^i$ where the $E^i$ are built up as in
+  \cite[3.3.4]{Mor05}, but we allow smashing with $\bbG_m$.
+  Precisely, we take $E^0 = pt$, and each $E^i$ is obtained from
+  $E^{i-1}$ as the cone of a map
+  \begin{equation*}
+    \bigvee_{\alpha}S^{n_{\alpha} }\wedge \bbG_m^{m_{\alpha}} \wedge \Sigma^{\infty} X_{\alpha, +} 
+    \to E^{i-1}
+  \end{equation*}
+  for some family of $X_{\alpha} \in \Sm/k$ and indices
+  $n_{\alpha}\geq 0$, $m_{\alpha}\in \bbZ$. 
+
+%  by the fact that the spectra
+%  $S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} U_+$ for $n\geq 0$,
+%  $m \in \bbZ$, and $U\in \Sm/k$ generate $\SH_{\geq 0}(k)$.
+
+  A standard 5-lemma argument using the long exact sequence obtained
+  by applying $\SH(k)(-, F[-1])$ to the triangle
+  \begin{equation*}
+    \vee S^{n_{\alpha} }\wedge \bbG_m^{m_{\alpha}} \wedge \Sigma^{\infty} X_{\alpha, +} \to E^{i-1} \to E^i
+  \end{equation*}
+  shows that for all $i\in \bbN$, $\SH(k)(E^i,F[-1])=0$. Furthermore,
+  these long exact sequences show that for all $i\geq 1$,
+  $\SH(k)(E^{i},F[-2]) \to \SH(k)(E^{i-1}, F[-2])$ is
+  surjective. Hence $\InverseLimit^{1} \SH(k)(E^{i}, F[-2]) = 0$, and
+  so
   \begin{align*}
-    \SH(k)(\hocolim \Sigma^{\infty}_t \tilde{E}_{\alpha}, F) 
-    & = \lim \SH(k)(\Sigma^{\infty}_t \tilde{E}_{\alpha}, F)\\
-    & = \lim \SH^{S^1}(k)(\tilde{E}_{\alpha}, R\Omega^{\infty}_t F)\\ 
-    & = 0.
+    \SH(k)(E, F[-1]) & = \SH(k)(\colim E^i, F[-1]) \\
+                     & = \InverseLimit \SH(k)(E^i, F[-1]) \\
+                     & = 0.
   \end{align*}
 
   
