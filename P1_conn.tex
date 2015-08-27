@@ -570,8 +570,8 @@ equivalences.
   $\Sigma^{\infty}_s \calX \to \Sigma^{\infty}L^{\infty}\calX$ is an
   $\bbA^1$-weak equivalence. So in the case of suspension spectra, we
   may use $\Sigma^{\infty}L^{\infty}\calX$ as an $\bbA^1$
-  localization. In particular, the sheaves
-  $\pi_n^{\bbA^1}\Sigma^{\infty}_s\calX$ are isomorphic to
+  localization. In particular, for any $n\in \bbZ$ the sheaf
+  $\pi_n^{\bbA^1}\Sigma^{\infty}_s\calX$ is isomorphic to
   $\pi_n\Sigma^{\infty}L^{\infty}\calX$.
 \end{remark}
 
@@ -663,14 +663,15 @@ equivalences.
 
 \begin{proposition}\cite[Lemma4.2.4]{Mor03}
   The functor
-  $L^{\infty} : \Spt^{S^1}_s(k) \to \Spt^{S^1}_{s,\bbA^1}(k)$
+  $L^{\infty} : \Spt^{S^1}(k) \to \Spt^{S^1,\bbA^1}(k)$
   identifies the $\bbA^1$-localized $S^1$ stable homotopy category
   with the homotopy category of $\bbA^1$-local $S^1$ spectra.
 \end{proposition}
 
-\begin{theorem}[$S^1$ stable connectivity theorem]
-  Let $E \in \SH_s^{S^1}(k)$, and suppose that whenever $n < 0$ the
-  sheaf $\pi_n E = 0$. Then for all $n<0$, $\pi_n L_{\bbA^1}E = 0$.
+\begin{theorem}
+  Let $k$ be an infinite field. Consider $E \in \SH^{S^1}(k)$ and
+  suppose that whenever $n < 0$ the sheaf $\pi_n E = 0$. Then for all
+  $n<0$, $\pi_n L^{\infty}E = 0$.
 \end{theorem}
 
 \begin{theorem}
@@ -684,10 +685,20 @@ equivalences.
 \end{proof}
 
 \begin{definition}
-  Strictly $\bbA^1$ invariant sheaf of Abelian groups.
+  Let $M$ be a sheaf of Abelian groups on $\Sm/k$ with respect to the
+  Nisnevich topology. We say $M$ is strictly $\bbA^1$ invariant if for
+  all $n\geq 0$ and all $X \in \Sm/k$, the map
+  $H^n_{Nis}(X; M) \to H^m_{Nis}(X\times \bbA^1; M)$ is an
+  isomorphism. Let $\Ab_{st\bbA^1}(\Sm/k)$ denote the full subcategory
+  of sheaves of Abelian groups on $\Sm/k$ in the Nisnevich topology
+  consisting of the strictly $\bbA^1$ invariant sheaves.
+\end{definition}
 
-  If $M$ is strictly $\bbA^1$ invariant sheaf of groups, define the
-  Eilenberg-MacLane spectrum $HM$ associated to it. 
+\begin{definition}
+  If $M\in\Ab(\Sm/k)$ is a sheaf of Abelian groups, the
+  Eilenberg-MacLane spectrum associated to $M$ is the $S^1$ spectrum
+  $HM$ given by $HM_n = K(M,n)$. The bonding maps come from the usual
+  identification of $\Omega_s K(M,n) \cong K(M,n-1)$. 
 \end{definition}
 
 \begin{proposition}
@@ -707,14 +718,10 @@ We always consider $\bbG_m$ to be pointed at $1$ unless otherwise
 specified.
 
 \begin{definition}
-  On the category $\Spt_s(k)$ equipped with the motivic stable model
+  On the category $\Spt^{S^1}(k)$ equipped with the motivic stable model
   category structure, there is a functor
   $\Sigma_t(-) = \bbG_m \wedge -$ given by
-  $\Sigma_t(E)_n = \bbG_m \wedge E_n$ with the evident structure
-  maps. In order for $\Sigma_t$ to be a left Quillen functor, we must
-  replace $\bbG_m$ with a cofibrant object. We do this, and work with
-  this object instead of $\bbG_m$.
-
+  $\Sigma_t(E)_n = \bbG_m \wedge E_n$ with the evident structure maps.
   Smashing with $\bbG_m$ is also a functor on the unstable category of
   pointed spaces, and we give it the same name $\Sigma_t$.
 \end{definition}
@@ -724,20 +731,19 @@ specified.
   denoted $\Omega_t$. It is given by the formula
   $\Omega_t\calX = \underline{\Hom}_{\bullet}(\bbG_m,\calX)$.
 
-  The functor $\Sigma_t$ on $\Spt_s^{S^1}(k)$ also has a right adjoint
+  The functor $\Sigma_t$ on $\Spt^{S^1}(k)$ also has a right adjoint
   $\Omega_t$ given by the internal hom functor, i.e.,
   $\Omega_tE = \underline{\Hom}(\Sigma^{\infty}\bbG_{m}, E)$.
 \end{definition}
 
 \begin{proposition}
-  The functor $\Sigma_t$ is a left Quillen functor on $\Spt_s(k)$ and
-  on $\Spt_s^{\bbA^1}(k)$. Furthermore, $\Sigma_t$ is an exact (or
-  homological) functor on $\SH^{S^1}(k)$, meaning it sends exact
-  triangles to exact triangles.
+  The functor $\Sigma_t$ is a left Quillen functor on $\Spt^{S^1}(k)$
+  and on $\Spt^{S^1,\bbA^1}(k)$. Furthermore, $\Sigma_t$ is a
+  triangulated functor on $\SH^{S^1}(k)$.
 \end{proposition}
 
 \begin{lemma}
-  Let $E \in \Spt_s^{\bbA^1}(k)$ be a $-1$ connected spectrum. Then
+  Let $E \in \Spt^{S^1,\bbA^1}(k)$ be a $-1$ connected spectrum. Then
   $\Sigma_t E$ is again $-1$ connected.
 \end{lemma}
 
@@ -767,8 +773,8 @@ specified.
   sheaves of sets}
 
 \begin{definition}
-  Let $G$ be sheaf of pointed sets on $\Sm/k$. The contraction of $G$
-  is the sheaf $G_{-1}=G_{con}$ given by the formula 
+  Let $G$ be a sheaf of pointed sets on $\Sm/k$. The contraction of
+  $G$ is the sheaf $G_{-1}$ given by the formula
   \begin{equation*}
     U \in \Sm/k \mapsto \ker( G(X\times \bbG_m) \xrightarrow{ev_1} G(X))
   \end{equation*}
@@ -790,8 +796,9 @@ specified.
 
 \begin{proposition}
   Contraction is an exact functor on the category
-  $\Ab_{st\bbA^1}(\Sm/k,Nis)$.\footnote{I may be able to prove this
-    after I establish the homotopy sheaves of $\Omega_t HM$.}
+  $\Ab_{st\bbA^1}(\Sm/k,Nis)$.
+%\footnote{I may be able to prove this
+%    after I establish the homotopy sheaves of $\Omega_t HM$.}
 
   For any sheaf $G \in \Ab(\Sm/k,Nis)$ and any $X \in \Sm/k$,
   $G(\bbG_m\times X) = G_{-1}(X) \oplus G(X)$.
@@ -800,19 +807,18 @@ specified.
 
 \subsection{Homotopy sheaves of $\underline{Hom}(\bbG_m, E)$}
 
-
 \begin{proposition}
   If $G$ is a sheaf of Abelian groups, then
-  $G_{-1} = \underline{\Hom}_{\bullet}(\bbG_m, G)$.  Hence
-  contraction is right adjoint to $- \wedge \bbG_m$. The claim is also
-  true for pointed sheaves of sets.
+  $G_{-1} = \underline{\Hom}_{\bullet}(\bbG_m, G)$.  Hence contraction
+  is right adjoint to $- \wedge \bbG_m$. The claim is also true for
+  pointed sheaves of sets.
 \end{proposition}
 
 \begin{proof}
   For this category, $\underline{\Hom}_{\bullet}(\bbG_m, G)$ and
   $G_{-1}$ both have sections at $X$ given by
   $ker( ev_1 : G(X \times \bbG_m) \to G(X))$. See description of
-  pointed internal hom for this. 
+  pointed internal hom for this. \marginpar{give ref}
 \end{proof}
 
 \begin{remark}
@@ -825,9 +831,9 @@ specified.
 \end{remark}
 
 \begin{remark}
-  Construction of canonical map
+  We now describe the construction of the canonical map
   $ \pi_n(\underline{\Hom}(\bbG_m,E)) \to \pi_n(E)_{-1}$ for an $S^1$
-  spectrum $E$. 
+  spectrum $E$.
 
   First observe that for any $U \in \Sm/k$ and any $n \in \bbZ$ there
   is a map
@@ -845,11 +851,7 @@ specified.
   \begin{equation*}
     \pi_n(\underline{\Hom}(\bbG_m, E)) \times \bbG_m \to \pi_n(E).
   \end{equation*}
-
-  Does this map descend to the smash? Yes, since if either map is a
-  constant map, then so is the composition. 
-
-  We thus get a map of sheaves of pointed sets
+  This map descends to the smash product, so we have 
   \begin{equation*}
     \pi_n(\underline{\Hom}(\bbG_m, E)) \wedge \bbG_m \to \pi_n(E).
   \end{equation*}
@@ -860,8 +862,6 @@ specified.
   \begin{equation*}
     \pi_n(\underline{\Hom}(\bbG_m, E)) \to \underline{\Hom}_{\bullet}(\bbG_m, \pi_n(E)) =\pi_n(E)_{-1}.
   \end{equation*}
-
-  Why is it a map of sheaves of abelian groups? 
 \end{remark}
 
 \begin{remark}
@@ -934,14 +934,14 @@ specified.
 
 \begin{proof}
   Reduce to the case of Eilenberg-MacLane spectra by using the
-  Postnikov tower. 
+  Postnikov tower.
 \end{proof}
 
 \subsection{Inverting $\bbG_m \wedge -$; $(\bbG_m, S^1)$ bi-spectra}
 
-The functor $\Sigma_t$ on $\Spt_s(k)$ is a left Quillen functor. We
-may therefore apply the general machinery of \cite{H-Spt} to
-create a model category in which $\Sigma_t$ is invertible. The
+The functor $\Sigma_t$ on $\Spt^{S^1}(k)$ is a left Quillen
+functor. We may therefore apply the general machinery of \cite{H-Spt}
+to create a model category in which $\Sigma_t$ is invertible. The
 construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 
 \begin{definition}
@@ -957,6 +957,7 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
     \bbG_m \wedge E_{i,j+1}\ar[r]^{\mu_{i,j+1}} & E_{i+1,j+1}
 }
   \end{equation*}
+  Let $\Spt^{(\bbG_m,S^1)}(k)$ denote the category of bispectra.
 \end{definition}
 
 \begin{remark}
@@ -982,7 +983,7 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 \end{definition}
 
 \begin{proposition}
-  If is $E$ a $(\bbG_m, S^1)$ bispectrum, the presheaf of homotopy
+  If $E$ is a $(\bbG_m, S^1)$ bispectrum, the presheaf of homotopy
   groups may also be calculated as
   \begin{equation*}
     \tilde{\pi}_{n+m\alpha}E(U) = \colim_{s,r} \calH_{\bullet}(k)(\bbG_m^{s+m} \wedge S^{n+r} \wedge U_+, E_{r,s}).
@@ -1015,10 +1016,10 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 \end{definition}
 
 \begin{proposition}
-  The category $\Spt_{s,t}^{\bbA^1}(k)$ of $(\bbG_m, S^1)$ bispectra with
-  $\bbA^1$ stable weak equivalences and $\bbA^1$ stable cofibrations
-  is a model category. Denote the associated homotopy category of
-  $\Spt_{s,t}^{\bbA^1}(k)$ by $\SH(k)$.
+  The category $\Spt^{(\bbG_m,S^1),\bbA^1}(k)$ of $(\bbG_m, S^1)$
+  bispectra with $\bbA^1$ stable weak equivalences and $\bbA^1$ stable
+  cofibrations is a model category. Denote the associated homotopy
+  category of $\Spt^{(\bbG_m,S^1),\bbA^1}(k)$ by $\SH(k)$.
 \end{proposition}
 
 \begin{proposition}
@@ -1050,10 +1051,6 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   \end{equation*}
 \end{proposition}
 
-\begin{proof}
-  
-\end{proof}
-
 \subsection{Connectivity of $(\bbG_m, S^1)$ bispectra}
 
 \begin{definition}
@@ -1063,9 +1060,8 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 \end{definition}
 
 \begin{proposition}
-  Let $E \in \Spt_s^{\bbA^1}(k)$. Consider
-  $\Sigma^{\infty}_t E \in \Spt_{s,t}^{\bbA^1}(k)$. If $E$ is $-1$ connected,
-  then so too is $\Sigma^{\infty}_t E$. 
+  Let $E \in \Spt^{S^1,\bbA^1}(k)$. If $E$ is $-1$ connected, then so
+  too is the $(\bbG_m,S^1)$ bi-spectrum $\Sigma^{\infty}_t E$.
 \end{proposition}
 
 \begin{proof}
@@ -1103,19 +1099,23 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
   The equivalence
   $\bbG_m \wedge P^j(\calX) \cong P^j(\bbG_m\wedge \calX)$ follows by
   checking on stalks, and the fact that any stalk of $\bbG_m$ is just
-  a disjoint union of points. 0 
+  a disjoint union of points. 
 \end{definition}
 
 \begin{theorem}
-  The triple $(\SH(k), \SH(k)_{\geq 0}, \SH(k)_{\leq 0})$ defines a
-  $t$-structure.
+  The pair $(\SH(k)_{\geq 0}, \SH(k)_{\leq 0})$ defines a
+  $t$-structure on $\SH(k)$.
 \end{theorem}
 
 \begin{proof}
-What needs to be done: 
-\begin{enumerate}
-    \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$. We
-  must show $\SH(k)(E,F[-1])=0$.  When $E$ is in the image of
+  Property (2) of a $t$-structure is clear.
+%Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$.
+%  Show $E[1] \in \SH(k)_{\geq 0}$ and $F[-1] \in \SH(k)_{\leq 0}$.
+%  This is clear by invertibility of $[1]$ in $\SH(k)$.
+  
+  We now establish property (1) of a $t$-structure. Let
+  $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$. We must show
+  $\SH(k)(E,F[-1])=0$.  When $E$ is in the image of
   $\Sigma^{\infty}_t$, the result follows by using the adjuction
   $\Sigma^{\infty}_t \dashv R\Omega^{\infty}_t$ and using the
   $t$-structure on $S^1$ spectra. In particular, for $U \in \Sm/k$ we
@@ -1135,10 +1135,6 @@ What needs to be done:
   for some family of $X_{\alpha} \in \Sm/k$ and indices
   $n_{\alpha}\geq 0$, $m_{\alpha}\in \bbZ$. 
 
-%  by the fact that the spectra
-%  $S^n\wedge \bbG_m^m \wedge \Sigma^{\infty} U_+$ for $n\geq 0$,
-%  $m \in \bbZ$, and $U\in \Sm/k$ generate $\SH_{\geq 0}(k)$.
-
   A standard 5-lemma argument using the long exact sequence obtained
   by applying $\SH(k)(-, F[-1])$ to the triangle
   \begin{equation*}
@@ -1155,32 +1151,15 @@ What needs to be done:
                      & = 0.
   \end{align*}
 
-  
-    \item Let $E \in \SH(k)_{\geq 0}$ and $F \in \SH(k)_{\leq 0}$.
-  Show $E[1] \in \SH(k)_{\geq 0}$ and $F[-1] \in \SH(k)_{\leq 0}$.
-
-  This is clear by invertibility of $[1]$ in $\SH(k)$.
-
-    \item Given $E \in \SH(k)$, construct $E_{\geq 0}$ and $E_{<0}$
-  which fit into an exact triangle
-  \begin{equation*}
-    E_{\geq 0} \to E \to E_{\leq -1} \to E_{\geq 0}[1].
-  \end{equation*}
-
-  % We can construct the functor $(-)_{\geq 0}$. For a bi-spectrum $E$,
-  % we define $(E_{\geq 0})_n = (E_n)_{\geq 0}$, where we are applying
-  % the truncation functor for $S^1$ spectra. The bonding maps are
-  % obtained by using the isomorphism
-  % $\bbG_m \wedge (E_n)_{\geq 0} \to (\bbG_m \wedge E_n)_{\geq 0}$. It
-  The functor $(-)_{\leq 0}$ has already been defined. For $k\in\bbZ$,
-  let $(-)_{\leq k}$ is a functor on $\Spt_s(k)$ and we may extend it
-  to a functor on $\SH(k)$ in the same way as for the case
-  $k=0$. Define $E_{\geq 0}$ to be the homotopy fiber of the canonical
-  map $E \to E_{\leq -1}$. The long exact sequence of homotopy groups
+  We now establish property (3) of a $t$-structure.  The functor
+  $(-)_{\leq 0}$ has already been defined. For $k\in\bbZ$, let
+  $(-)_{\leq k}$ is a functor on $\Spt_s(k)$ and we may extend it to a
+  functor on $\SH(k)$ in the same way as for the case $k=0$. Define
+  $E_{\geq 0}$ to be the homotopy fiber of the canonical map
+  $E \to E_{\leq -1}$. The long exact sequence of homotopy groups
   shows that $(-)_{\geq 0}$ has the correct homotopy groups. The
   uniqueness of the triangle follows by properties of triangulated
-  categories. 
-\end{enumerate}
+  categories.
 \end{proof}
 
 \subsection{The heart of the $t$-structure on $\SH(k)$}
