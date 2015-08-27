@@ -1,7 +1,7 @@
 \documentclass{amsart}%options: 11pt, A4paper, 
 
 \usepackage{amssymb,amsfonts,amsmath,amsthm} 
-\usepackage[left=1.5truein,right=1.5truein]{geometry}%options:
+\usepackage[left=1.75truein,right=1.75truein]{geometry}%options:
 \usepackage{pstricks,xkeyval,pst-xkey,pst-3dplot,pstricks-add}
 \usepackage{longtable}
 
@@ -40,23 +40,22 @@ by Fabien Morel.
   localization of spaces at the class of maps
   $\{ U_+ \wedge \bbA^1 \to U \st U \im \Sm/k\}$. To get to $\bbP^1$
   spectra, we first invert $S^1 \wedge -$ to get a category of
-  $S^1$-spectra, and then we invert $\bbG_m \wedge -$ to get a
+  $S^1$ spectra, and then we invert $\bbG_m \wedge -$ to get a
   category of $(\bbG_m, S^1)$ bispectra.
   \begin{equation*}
     \calH_{s,\bullet}(k) \to \calH_{\bullet}(k) \to \SH^{S^1}(k) \to \SH(k)
   \end{equation*}
 
-  The line of attack is then to show that for a pointed space $\calY$,
-  the $S^1$ suspsension spectrum $\Sigma^{\infty}_s \calY$ in the
-  stable model category is $-1$ connected. Then we establish the first
-  connectivity theorem which ensures the $\bbA^1$ localization of
-  $\Sigma^{\infty}_s\calY$ is $-1$ connected. Finally, we show that
-  inverting $\bbG_m$ does not affect the connectivity, i.e.,
-  $\Sigma^{\infty}_{t}\Sigma^{\infty}_s \calY$ is again $-1$
-  connected.
-
   The machinery that we set up to prove this theorem will also allow
   us to establish a $t$-structure on $\SH(k)$, and identify its heart.
+  % The line of attack is then to show that for a pointed space $\calY$,
+  % the $S^1$ suspsension spectrum $\Sigma^{\infty}_s \calY$ in the
+  % stable model category is $-1$ connected. Then we establish the first
+  % connectivity theorem which ensures the $\bbA^1$ localization of
+  % $\Sigma^{\infty}_s\calY$ is $-1$ connected. Finally, we show that
+  % inverting $\bbG_m$ does not affect the connectivity, i.e.,
+  % $\Sigma^{\infty}_{t}\Sigma^{\infty}_s \calY$ is again $-1$
+  % connected.
 \end{remark}
 
 \begin{remark}
@@ -276,30 +275,49 @@ localization of the injective model category structure on spaces with
 respect to the class of maps
 $W = W_{\bbA^1} = \{ U \times \bbA^1 \to U \st U \in \Sm/k\}$. We
 deonte the category of spaces with the model structure obtained by
-left Bousfield localization by $\Spc^{\bbA^1}(k)$ and its homotopy
-category by $\calH(k)$. See %\cite[Definition 3.3.1]{Hhorn}
+left Bousfield localization by $L_W\Spc(k)$ and its homotopy category
+by $\calH(k)$. See %\cite[Definition 3.3.1]{Hhorn}
 \cite[Chapter 3]{Hhorn} for the general theory of Bousfield
 localization. One thing we obtain is a localization functor
-$L_{\bbA^1} : \calH_s(k) \to L_{W}\calH_s(k)$ which is a left Quillen
+$L_{\bbA^1} : \calH_s(k) \to \calH(k)$ which is a left Quillen
 functor.  In particular, $L_{\bbA^1}$ sends sends $\bbA^1$ weak
 equivalences to isomorphisms.
 
-The model category $\Spc^{\bbA^1}(k)$ is constructed as follows. The
-underlying category of $\Spc^{\bbA^1}(k)$ is $\Spc(k)$, but the weak
+The model category $L_W\Spc(k)$ is constructed as follows. The
+underlying category of $L_W\Spc(k)$ is $\Spc(k)$, but the weak
 equivalences are the $\bbA^1$-local weak equivalences. The
 cofibrations are the cofibrations in the injective model structure on
 $\Spc(k)$. The fibrations are what they need to be, i.e., those maps
 which satisfy the left lifting property with respect to trivial
-cofibrations, i.e., $\bbA^1$-local weak equivalences which are also
 cofibrations.
+%i.e., $\bbA^1$-local weak equivalences which are also
+%cofibrations.
+
+In order to effectively work with the $\calH(k)$, we require a means
+of constructing fibrant replacements in $L_W\Spc(k)$. Morel
+accomplishes this by constructing another model category with homotopy
+category $\calH(k)$. 
+
+\begin{definition}
+  Let $\Spc^{\bbA^1}(k)$ denote the full subcategory of $\Spc(k)$
+  of $\bbA^1$ local spaces. The inclusion
+  $\Spc^{\bbA^1}(k) \to \Spc(k)$ is a left Quillen functor with
+  left adjoint $L^{\infty}$. See \cite[Proposition 3.2.3]{Mor05} for
+  the construction. 
+\end{definition}
+
+\begin{proposition}
+  The homotopy category of $\Spc^{\bbA^1}(k)$ is equivalent to
+  $\calH(k)$. 
+\end{proposition}
 
 %Morel writes $L_{\bbA^1}$ for the (derived) functor which sends a
 %space (without base point) $\calX$ to an $\bbA^1$-localizion.
 
-In \cite[Proposition 3.2.3]{Mor05}, Morel gives an explicit
-construction which takes a pointed space $\calY$ and produces a space
-$L^{\infty}\calY$ which is $\bbA^1$ local and a map
-$\calY \to L^{\infty}\calY$ which is an $\bbA^1$ weak equivalence. 
+% In , Morel gives an explicit
+% construction which takes a pointed space $\calY$ and produces a space
+% $L^{\infty}\calY$ which is $\bbA^1$ local and a map
+% $\calY \to L^{\infty}\calY$ which is an $\bbA^1$ weak equivalence. 
 
 % Let $\calY_f$ be the functorial fibrant replacement of $\calY$ with
 % respect to the injective model structure. Consider $\bbA^1$ to be
@@ -319,6 +337,12 @@ $\calY \to L^{\infty}\calY$ which is an $\bbA^1$ weak equivalence.
 %   The natural morphism $\calY \to L^{\infty}(\calY)$ is an $\bbA^1$
 %   weak equivalence, and $L^{\infty}(\calY)$ is $\bbA^1$ local.
 % \end{proposition}
+
+% \marginpar{
+%   Should I include the explicit model of the $\bbA^1$ localized
+%   unstable homotopy category? It should be described in the other
+%   lectures. Perhaps I should at least set notation.
+% }
 
 \begin{definition}
   Let $\calX$ be a space. Define $\pi_0(\calX)$ to be the
@@ -346,13 +370,13 @@ $\calY \to L^{\infty}\calY$ which is an $\bbA^1$ weak equivalence.
 For a sheaf of abelian groups $M$ on $\Sm/k$ and a natural number $n$,
 a Dold-Kan construction gives a simplifical presheaf $K(M,n)$. It is
 called the Eilenberg-MacLane spectrum of type $(M,n)$ and has homotopy
-sheaves as expected:
+sheaves as expected.
 \begin{equation*}
-  \pi_m(K(M,n)) = \begin{cases}0 & \text{if }m\neq n \\ M & \text{if } m = n \end{cases}.
+  \pi_m(K(M,n)) = \begin{cases}0 & \text{if }m\neq n \\ M & \text{if } m = n \end{cases}
 \end{equation*}
 
-Important equation for this construction. For $X\in\Sm/k$, $M$ a sheaf
-of Abelian groups,
+\begin{proposition}
+  For $X\in\Sm/k$ and $M$ a sheaf of Abelian groups,
 \begin{equation*}
   \calH_s(k)(rX, K(M,n)) \cong H^n_{Nis}(X; M).
 \end{equation*}
@@ -360,43 +384,69 @@ It therefore follows that
 \begin{equation*}
   \calH_{\bullet}(k)(rX_+, K(M,n)) \cong H^n_{Nis}(X; M).
 \end{equation*}
+\end{proposition}
 
-Use square brackets to denote the maps in the unstable pointed
-(motivic) homotopy category, i.e.,
-$[\calX, \calY] = \calH_{\bullet}(k)(\calX, \calY)$.
+\begin{notation}
+  % For $\calX, \calY \in \Spc_{\bullet}(k)$, we write
+  % $[\calX, \calY] = \calH_{\bullet}(k)(\calX, \calY)$.
 
-Use $\pi_n^{\bbA^1}(\calX)$ for the sheaf of homotopy groups in the
-motivic category, i.e.,
-$\pi^{\bbA^1}_n(\calX) = \pi_n(L^{\infty}\calX)$.  This is also
-obtained by sheafifying the presheaf given by
-\begin{equation*}
-  U \in \Sm/k \mapsto [S^n\wedge U_+, \calX].
-\end{equation*}
+  For a pointed space $\calX$, Let $\pi_n^{\bbA^1}(\calX)$ denote the
+  sheaf of homotopy groups in the motivic category, i.e.,
+  $\pi^{\bbA^1}_n(\calX) = \pi_n(L^{\infty}\calX)$.  The sheaf
+  $\pi^{\bbA^1}_n(\calX)$ is also the sheafification of the presheaf
+  given by
+  \begin{equation*}
+    U \in \Sm/k \mapsto \calH_{\bullet}(k)(S^n\wedge U_+, \calX).
+  \end{equation*}
+\end{notation}
 
-
-\subsection{Homotopy purity, connectedness calculations}
+\subsection{Weak connectedness}
 
 \begin{proposition}
   Let $k$ be an infinite field, and consider $\calX$ be a pointed
   space. If for any finitely generated field $F$ over $k$,
   $\pi_0(\calX)(F) = 0$, then the sheaf $\pi_0(\calX)$ is trivial.
 \end{proposition}
-
+\marginpar{For spaces or spectra???}
 \begin{proof}
-  Check at points. Use Gabber presentation lemma. 
+  The proof follows along the lines of \cite[Lemma 6.1.3]{Mor05}.
 \end{proof}
 
-\subsection{$S^1$-spectra}
+\subsection{$S^1$ spectra}
+
+The functor $\Sigma_s : \Spc_{\bullet}(k) \to \Spc_{\bullet}(k)$ given
+by $\Sigma_s \calX = S^1 \wedge \calX$ is a left Quillen functor on
+$\Spc_{\bullet}(k)$, with right adjoint $\Omega_s$, where
+$\Omega_s\calX = \underline{\Hom}_{\bullet}(S^1,\calX)$. This follows
+since $S^1$ is a cofibrant object of $\Spc_{\bullet}(k)$. Note,
+however, that the derived functor $\Sigma_s$ is not an equivalence of
+homotopy categories. We may invert this functor, i.e., make a new
+category where $\Sigma_s$ is an equivalence of homotopy categories, by
+creating a category of $S^1$ spectra by using the general machinery
+developed in \cite{H-Spt}. Here the ``s'' in $\Sigma_s$ and $\Omega_s$
+stands for ``simplicial circle''.
 
 \begin{definition}
-  Let $\Spt_s(k)$ denote the category of $S^1$-spectra of spaces
-  $\Delta^{op}\Shv(\Sm/k)$. We first endow this category with the
-  projective model structure (or level-wise model structure), i.e., a
-  map $f:E\to F$ is a weak equivalence iff for any $n$ the map
-  $f_n : E_n \to F_n$ is a w.e.; a map $f : E\to F$ is a fibration iff
-  for all $n$ the map $f_n : E_n \to F_n$ is a fibration. The
-  cofibrations are characterized by the property that $f : E \to F$ is
-  a cofib iff $f_0 : E_0 \to F_0$ is a cofib and for any $n \geq 1$
+  Let $\Spt^{S^1}(k)$ denote the category of $S^1$ spectra of spaces
+  over $k$. An object $E \in \Spt^{S^1}(k)$ is a sequence of pointed
+  spaces $E_i \in \Spc_{\bullet}(k)$ equipped with bonding maps
+  $\sigma_i : S^1 \wedge E_i \to E_{i+1}$. A map of spectra
+  $f : E \to F$ consists of a sequence of maps of spaces
+  $f_i : E_i \to F_i$ which are compatible with the bonding maps.
+
+  We first endow this category with the projective model structure (or
+  level-wise model structure), i.e., a map $f:E\to F$ is a weak
+  equivalence if for any $n$ the map $f_n : E_n \to F_n$ is a w.e.; a
+  map $f : E \to F$ is a fibration if for all $n$ the map
+  $f_n : E_n \to F_n$ is a fibration. The cofibrations are those maps
+  satisfying the right lifting property with respect to trivial
+  fibrations. 
+
+  The projective cofibrations have the following characterization
+  \cite[Proposition 1.15]{H-Spt}. A map $f : E \to F$ is a projective
+  cofibration if and only if $f_0 : E_0 \to F_0$ is a cofibration and
+  for any $n \geq 1$, the dotted arrow in the diagram below is a
+  cofibration. Here $P.O.$ denotes the push-out of the diagram.
   \begin{equation*}
     \xymatrix{
       S^1\wedge E_{n-1} \ar[r]^-{\sigma_{n-1}} \ar[d]_{S^1\wedge f_{n-1}} & E_n \ar@(r,u)[rdd]^{f_n} \ar[d] & \\ 
@@ -406,61 +456,66 @@ obtained by sheafifying the presheaf given by
   \end{equation*}
 \end{definition}
 
-This model structure does not actually invert $S^1 \wedge -$. To
+This model structure does not actually invert $\Sigma_s$. To
 accomplish this, we must localize with respect to the stable
 equivalences.
 
 \begin{definition}
-  A map $f : E \to F$ of $S^1$-spectra is a stable equivalence if for
+  A map $f : E \to F$ of $S^1$ spectra is a stable equivalence if for
   any $n\in \bbZ$ the induced map of homotopy sheaves
-  $\pi_n(f) : \pi_n(E) \to \pi_n(F)$ is an isomorphism. 
+  $\pi_n(f) : \pi_n(E) \to \pi_n(F)$ is an isomorphism.
 
-  The stable model category structure on $\Spt_s(k)$ is given by
+  The stable model category structure on $\Spt^{S^1}(k)$ is given by
   declaring the weak equivalences to be the stable weak equivalences,
   and the cofibrations to be the same as those for the projective
   model structure. This is indeed a left Bousfield localization, but
-  we will not describe it further as such. 
+  we will not describe it further as such. Consult \cite{H-Spt} for
+  more details. 
+
+  Denote the homotopy category of $\Spt^{S^1}(k)$ by $\SH^{S^1}_s(k)$.
 \end{definition}
 
-
 \begin{definition}
-  Let $\Spt_s^{\bbA^1}(k)$ denote the category of $S^1$ spectra
-  endowed with the stable model category structure localized at the
-  collection of maps
-  $\{\Sigma^{\infty} U_+ \wedge \bbA^1 \to \Sigma^{\infty}U_+ \st U
-  \in \Sm/k\}$. 
-
-  Let $\SH^{S^1}(k)$ denote the homotopy category associated to
-  $\Spt_s^{\bbA^1}(k)$. We will use $\SH_s^{S^1}(k)$ to denote the
-  homotopy category of $\Spt_s(k)$.
+  Consider the class of maps
+  $ W = \{\Sigma^{\infty} U_+ \wedge \bbA^1 \to \Sigma^{\infty}U_+ \st
+  U \in \Sm/k\}$
+  in $\Spt^{S^1}(k)$. The left Bousfield localization of
+  $\Spt^{S^1}(k)$ with respect to $W$ exists, and we write
+  $L_W\Spt^{S^1}(k)$ for the resulting model category. Denote the
+  homotopy category associated to $L_W\Spt^{S^1}(k)$ by
+  $\SH^{S^1}(k)$.
 \end{definition}
 
 \begin{remark}
-  There is a functor $L^{\infty}$ on the category of $S^1$ spectra
-  which is similar to the unstable construction.
+  Let $\Spt^{S^1,\bbA^1}(k)$ denote the full subcategory of
+  $\Spt^{S^1}(k)$ consisting of $\bbA^1$-local spectra. The inclusion
+  $\Spt^{S^1, \bbA^1}(k) \to \Spt^{S^1}(k)$ has a left adjoint
+  $L^{\infty}$ which has a similar construction as was considered for
+  spaces. This adjunction is indeed a Quillen functor, and so just as
+  in the unstable setting, we may identify the stable $\bbA^1$
+  homotopy category with the homotopy category of the $\bbA^1$-local
+  $S^1$ spectra. See \cite[\S4.2]{Mor05} for details.
 
-  So we can use the functor $L^{\infty}$ as an $\bbA^1$ localization
-  functor. To be precise, we let $\Spt_s^{\bbA^1loc}(k)$ be the
-  subcategory of $\Spt_s(k)$ consisting of the $\bbA^1$ local
-  spectra. We may equip $\Spt_s^{\bbA^1loc}(k)$ with a model structure
-  with weak equivalences the $\bbA^1$ weak equivalences, the
-  cofibrations are the stable cofibrations, and the fibrations are
-  what they have to be.
+  % The functor $L^{\infty} : \Spt_s(k) \to \Spt_s^{\bbA^1loc}(k)$ is
+  % left adjoint to the inclusion functor, and is a left Quillen
+  % functor. The homotopy category of $\Spt_s^{\bbA^1loc}(k)$ is
+  % categorically equivalent to $\SH^{S^1}(k)$. \cite[Corollary
+  % 4.2.3]{Mor05}.
 
-  The functor $L^{\infty} : \Spt_s(k) \to \Spt_s^{\bbA^1loc}(k)$ is
-  left adjoint to the inclusion functor, and is a left Quillen
-  functor. The homotopy category of $\Spt_s^{\bbA^1loc}(k)$ is
-  categorically equivalent to $\SH^{S^1}(k)$. \cite[Corollary
-  4.2.3]{Mor05}.
+  For $S^1$ spectra $E$ and $F$, we calculate the stable $\bbA^1$
+  homotopy group$\SH^{S^1}(k)(E,F)$ by
+  \begin{align*}
+    \SH^{S^1}(k)(E,F) & = \SH^{S^1}(k)(L^{\infty} E, L^{\infty} F)\\
+                      &= \SH^{S^1}_s(k)(E,L^{\infty}F)
+  \end{align*}
+  Here we consider the model for $\SH^{S^1}(k)$ given by Bousfield
+  localization, then translate to the category of $\bbA^1$ local
+  spectra using $L^{\infty}$. The second equality follows from the
+  Quillen adjunction $\Spt^{S^1,\bbA^1}(k) \hookrightarrow \Spt^{S^1}(k)$.
 
-  For spectra $E$ and $F$, we may compute
-  $[E,F]^{\bbA^1}:= \SH^{S^1}(k)(E,F)$ by calculating
-  $[L^{\infty} E, L^{\infty} F]^{\bbA^1}$. Note that this is
-  $\SH^{S^1}_s(k)(E,L^{\infty}F)$ by using the adjunction. If we
-  assume $E$ is cofibrant and $L^{\infty}F$ is fibrant, we get the
-  formula
+  If we assume $E$ is cofibrant and $F$ is fibrant, we get the formula
   \begin{equation*}
-    [E,F]^{\bbA^1} = \Spt_s(k)(E,L^{\infty}F).
+    \SH^{S^1}(k)(E,F) = \Spt^{S^1}(k)(E,L^{\infty}F).
   \end{equation*}
 \end{remark}
 
@@ -479,16 +534,17 @@ equivalences.
 \end{definition}
 
 \begin{definition}
-  An $S^1$-spectrum $E$ is said to be $n$-connected if for any
+  An $S^1$ spectrum $E$ is said to be $n$-connected if for any
   $m\leq n$, the homotopy sheaves $\pi_m(E)$ are trivial.
 \end{definition}
 
 \begin{definition}
   There is a left Quillen functor
-  $\Sigma^{\infty}_s : \Spc_{\bullet} \to \Spt_s(k)$ given by
-  $(\Sigma^{\infty}\calY)_n =(S^1)^{\wedge n} \wedge \calY$ with the
-  evident bonding maps. The right adjoint to this functor is given by
-  ``evaluation at $0$'', i.e., $\Omega^{\infty}(E) = E_0$.
+  $\Sigma^{\infty}_s : \Spc_{\bullet} \to \Spt^{S^1}(k)$ given by
+  $(\Sigma^{\infty}\calY)_n =(S^1)^{\wedge n} \wedge \calY$ where the
+  bonding maps come from associativity of smash product. The right
+  adjoint to this functor is given by ``evaluation at $0$'', i.e.,
+  $\Omega^{\infty}(E) = E_0$.
 \end{definition}
 
 \begin{remark}
@@ -498,27 +554,38 @@ equivalences.
   \begin{equation*}
     R\Omega^{\infty}(E) = \colim_i \Omega_s^{i}E_i.
   \end{equation*}
-
   This comes from the fact that fibrant $S^1$ spectra are exactly the
   $\Omega$ spectra, and the description of the fibrant replacement
   functor. 
 \end{remark}
 
 \begin{remark}
-  We also get a left Quillen functor
-  $ \Sigma^{\infty}_s : \Spc_{\bullet}^{\bbA^1}(k) \to
-  \Spt_s^{\bbA^1}(k)$ given by the same formula as above.
-
-%  What is the fibrant replacement functor in $\Spt_s^{\bbA^1}(k)$?
+  The left Quillen functor
+  $ \Sigma^{\infty}_s : \Spc_{\bullet}^{\bbA^1}(k) \to \Spt^{S^1}(k)$
+  factors through the category of $\bbA^1$-local spaces. This follows
+  by \cite[Remark 4.1.3]{Mor05}. Furthermore, since a map
+  $ f \in \Spt^{S^1}(k)(\Sigma^{\infty}\calX, E)$ is determined by
+  $f_0 : \calX \to E_0$ by the adjunction
+  $\Sigma^{\infty}_s \dashv \Omega^{\infty}_s$, one can show that
+  $\Sigma^{\infty}_s \calX \to \Sigma^{\infty}L^{\infty}\calX$ is an
+  $\bbA^1$-weak equivalence. So in the case of suspension spectra, we
+  may use $\Sigma^{\infty}L^{\infty}\calX$ as an $\bbA^1$
+  localization. In particular, the sheaves
+  $\pi_n^{\bbA^1}\Sigma^{\infty}_s\calX$ are isomorphic to
+  $\pi_n\Sigma^{\infty}L^{\infty}\calX$.
 \end{remark}
 
 \begin{remark}
   The stable homotopy category is symmetric monoidal, with smash
   product $\wedge$ and internal hom $\underline{\Hom}$. Using
   symmetric spectra, one can give these constructions on the category
-  of spectra.
-
-  The stable homotopy category is a triangulated category.  
+  of spectra \cite{HSS}.  The $S^1$ stable homotopy category is a
+  triangulated category. The shift is given by $S^1$ suspension, and
+  distinguished triangles are those triangles isomorphic to the cone
+  of a map
+  \begin{equation*}
+    X \xrightarrow{f} Y \to C(f) \to X[1].
+  \end{equation*}
 \end{remark}
 
 \begin{proposition}
@@ -527,11 +594,8 @@ equivalences.
   \begin{equation*}
     H^n_{Nis}(U; M) \to \SH^{S^1}(\Sigma^{\infty}U_+, HM[n]).
   \end{equation*}
-\end{proposition}
-
-\begin{proof}
   This is \cite[Lemma 3.2.3]{Mor05}.
-\end{proof}
+\end{proposition}
 
 \subsection{$t$-structures}
 
@@ -556,7 +620,7 @@ equivalences.
   $\frakC_{\geq 0} \cap \frakC_{\leq 0}$. 
 \end{definition}
 
-\begin{definition}[$t$-structure on $\SH_s^{S^1}(k)$]
+\begin{definition}%[$t$-structure on $\SH_s^{S^1}(k)$]
   Define $\SH_s^{S^1}(k)_{\geq 0}$ to be the full subcategory of
   $\SH_s^{S^1}(k)$ consisting of objects $E$ such that $\pi_n(E)=0$
   whenver $n<0$.
@@ -567,9 +631,8 @@ equivalences.
 \end{definition}
 
 \begin{theorem}
-  The triple
-  $(\SH_s^{S^1}(k), \SH_s^{S^1}(k)_{\geq 0}, \SH_s^{S^1}(k)_{\leq 0})$
-  is a $t$-structure on $\SH_s^{S^1}(k)$. 
+  The pair $(\SH_s^{S^1}(k)_{\geq 0}, \SH_s^{S^1}(k)_{\leq 0})$ is a
+  $t$-structure on $\SH_s^{S^1}(k)$.
 \end{theorem}
 
 
@@ -587,7 +650,7 @@ equivalences.
   For a space $\calX$, we then define $P^{n}\calX$ to be the space
   given by sheafification of $U \mapsto \calX(U)^{(n)}$.
 
-  Now for $E$ an $S^1$-spectrum, let $E_{\leq 0}$ be the spectrum with
+  Now for $E$ an $S^1$ spectrum, let $E_{\leq 0}$ be the spectrum with
   $(E_{\leq 0})_n = P^n(E_n)$. The bonding maps come from the
   canonical map
   \begin{equation*}
@@ -877,7 +940,7 @@ specified.
 \subsection{Inverting $\bbG_m \wedge -$; $(\bbG_m, S^1)$ bi-spectra}
 
 The functor $\Sigma_t$ on $\Spt_s(k)$ is a left Quillen functor. We
-may therefore apply the general machinery of \cite{H-Spectra} to
+may therefore apply the general machinery of \cite{H-Spt} to
 create a model category in which $\Sigma_t$ is invertible. The
 construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 
@@ -898,7 +961,7 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 
 \begin{remark}
   Note that a $(\bbG_m,S^1)$ bispectrum is just a $\bbG_m$-spectrum of
-  $S^1$-spectra. So we may therefore equip it with the projective
+  $S^1$ spectra. So we may therefore equip it with the projective
   stable model structure we get from this perspective. We may
   therefore think of a $(\bbG_m, S^1)$ bi-spectrum $E_{i,j}$ as a
   sequence of $S^1$ spectra $E_{i,*}$. 
@@ -960,7 +1023,7 @@ construction of Hovey may be described as $(\bbG_m, S^1)$ bispectra.
 
 \begin{proposition}
   The fibrant bi-spectra are the $\Omega_t$-spectra. \cite[Theorem
-  3.4]{H-Spectra}
+  3.4]{H-Spt}
 \end{proposition}
 
 \begin{proposition}
@@ -1106,7 +1169,7 @@ What needs to be done:
 
   % We can construct the functor $(-)_{\geq 0}$. For a bi-spectrum $E$,
   % we define $(E_{\geq 0})_n = (E_n)_{\geq 0}$, where we are applying
-  % the truncation functor for $S^1$-spectra. The bonding maps are
+  % the truncation functor for $S^1$ spectra. The bonding maps are
   % obtained by using the isomorphism
   % $\bbG_m \wedge (E_n)_{\geq 0} \to (\bbG_m \wedge E_n)_{\geq 0}$. It
   The functor $(-)_{\leq 0}$ has already been defined. For $k\in\bbZ$,
@@ -1172,6 +1235,9 @@ What needs to be done:
     \bibitem[A-1974]{Adams} Adams, J.F., {\it Stable Homotopy and
     Generalized Homology.} Chicago Lectures in Mathematics, (1974).
 
+    \bibitem[Ayo08]{Ayoub} Ayoub, Joseph, {\it Un contre-exemple {\'a}
+    la conjecture de $\bbA^1$-connexit{\'e} de F.  Morel}. (2008).
+
     % \bibitem[A-1965]{Adams-Periodicity} Adams, J.F., {\it A
     % periodicity theorem in homological
     % algebra}. Proc. Camb. Phil. Soc. (1966).
@@ -1216,8 +1282,12 @@ What needs to be done:
     \bibitem[H-Mod]{H-Mod} Hovey, Mark, {\it Model Categories}.
   online preprint (1991).
   
-    \bibitem[H-Spt]{H-Spectra} Hovey, Mark, {\it Spectra and symmetric
+    \bibitem[H-Spt]{H-Spt} Hovey, Mark, {\it Spectra and symmetric
     spectra in general model categories}. journal? (2001).
+
+    \bibitem[HSS]{HSS} Hovey, Mark; Shipley, Brooke; Smith, Jeff
+  {\it Symmetric Spectra}. journal? (1998).
+
 
   %   \bibitem[HKO]{HKO} Hu, P.; Kriz, I.; Ormsby, K., {\it Remarks on
   %   motivic homotopy theory over algebraically closed fields} (2008).
