@@ -1,0 +1,135 @@
+\documentclass{amsart}%options: 11pt, A4paper, 
+
+\usepackage{amssymb,amsfonts,amsmath,amsthm} 
+\usepackage[left=1.75truein,right=1.75truein]{geometry}%options:
+\usepackage{pstricks,xkeyval,pst-xkey,pst-3dplot,pstricks-add}
+\usepackage{longtable}
+
+\input{Commands}
+
+\newcommand{\bispt}{\Spt_{S^1,\bbG_m}}
+\newcommand{\symspt}{\Spt^{\Sigma}}
+\newcommand{\Fpbar}{\overline{\bbF}_p}
+\newcommand{\cosk}{\mathrm{cosk}}
+
+\begin{document}
+
+Let me set some notational conventions for the discussion to follow.
+\begin{enumerate}
+    \item Let $\Spc(k)$ denote the category of simplicial sheaves on
+  $\Sm/k$ with respect to the Nisnevich topology. We may equip
+  $\Spc(k)$ with the injective model structure as Morel does. Let
+  $\Spc_{\bullet}(k)$ denote the category of pointed spaces. 
+    \item Let $W_{\bbA^1}$ denote the class of maps
+  $\{ U \times \bbA^1 \to U \st U \in \Sm/k\}$. Denote the left
+  Bousfield localization of $\Spc(k)$ with respect to $W_{\bbA^1}$ by
+  $L_{\bbA^1}\Spc(k)$. There is a left Quillen functor
+  $L_{\bbA^1} : \Spc(k) \to L_{\bbA^1}\Spc(k)$ given by the identity
+  functor. The analogous constructions exist for pointed spaces. 
+    \item Denote the full subcategory of $\Spc_{\bullet}(k)$
+  consisting of $\bbA^1$-local objects by
+  $\Spc^{\bbA^1}_{\bullet}(k)$. Morel proves that there is a left
+  Quillen functor
+  $L^{\infty} : \Spc_{\bullet}(k) \to \Spc_{\bullet}^{\bbA^1}(k)$
+  which induces a Quillen equivalence between
+  $L_{\bbA^1}\Spc_{\bullet}(k)$ and $\Spc_{\bullet}^{\bbA^1}(k)$.
+    \item Let $\Spt^{S^1}(k)$ denote the category of $S^1$-spectra of
+  spaces equipped with the stable (simplicial) model category
+  structure. Let
+  $W_{\bbA^1} = \{ \Sigma^{\infty}U_+ \wedge \bbA^1_+ \to
+  \Sigma^{\infty} U_+ \st U \in \Sm/k \}$.
+  Denote the left Bousfield localization of $\Spt^{S^1}(k)$ with
+  respect to $W_{\bbA^1}$ by $L_{\bbA^1} \Spt^{S^1}(k)$. 
+    \item Let $\Spt^{S^1,\bbA^1}(k)$ denote the full subcategory of
+  $\Spt^{S^1}(k)$ consisting of the $\bbA^1$-local objects. Morel
+  constructs a left Quillen functor
+  $L^{\infty} : \Spt^{S^1}(k) \to \Spt^{S^1,\bbA^1}(k)$ which induces
+  a Quillen equivalence between $\Spt^{S^1,\bbA^1}(k)$ and
+  $L_{\bbA^1}\Spt^{S^1}(k)$.
+\end{enumerate}
+
+From our discussion, the issue with Morel's argument in the case of a
+perfect field is Lemma 3.3.9 of \cite{Mor03}. Here is the reproduced statement.
+
+\begin{quote}
+  {\bf Lemma 3.3.9} {\it Let $f: \calX \to \calY$ be a morphism of simplicial
+    preseheaves. Then the $\bbA^1$-localization of the cone of $f$ is
+    canonically isomorphic to the $\bbA^1$-localization of the cone of
+    $L_{\bbA^1}f : L_{\bbA^1}\calX \to L_{\bbA^1}\calY$.}
+\end{quote}
+
+There are some issues here. Presumably he means ``simplicial sheaves''
+instead of ``simplicial presheaves.'' It is unclear whether by
+``$L_{\bbA^1}$'' Morel wants the functor coming from Bousfield
+localization or the functor $L^{\infty}$ he constructs. 
+
+If we consider the functor
+$L_{\bbA^1} : \Spt^{S^1}(k) \to L_{\bbA^1}\Spt^{S^1}(k)$ obtained by
+Bousfield localization, the lemma follows by Morel's explicit
+description of cones, and since $L_{\bbA^1}$ is the identity
+functor. For $f : E \to F$ a map of $S^1$ spectra, Morel defines
+$C(f)$ to be the spectrum with $C(f)_n$ the cone of
+$f_n : E_n \to F_n$ as pointed spaces. Here, the cone of a map of pointed spaces is just the push-out of the following diagram.
+\begin{equation*}
+  \xymatrix{
+    E_n \ar[r] \ar[d] & F_n \wedge \Delta^1 \\
+    pt & \\
+    }
+\end{equation*}
+In particular, the cone is just a colimit, which depends only on the
+category, and not on the model structure. The point is that
+$E_n \to F_n \wedge \Delta^1$ is a cofibration in both model category
+structures on $\Spc_{\bullet}(k)$, so that the homotopy pushout is
+weak equivalent to the categorical push-out by Bousfield-Kan. So Lemma
+3.3.9 is correct in this case. 
+
+Now let's consider what happens when we apply $L^{\infty}$ to the cone
+of $f : E \to F$. Let's suppose that $f$ is a cofibration in the
+stable simplicial model structure on $S^1$ spectra. Recall that
+$L^{\infty}$ is a left Quillen functor. It thus preserves cofibrations
+and preserves colimits. Now, the cone of $f : E \to F$ in
+$\Spt^{S^1}(k)$ is the homotopy push-out of the following diagram
+\begin{equation*}
+  \xymatrix{
+    E \ar[r] \ar[d] & F \\
+    pt & \\
+    }
+\end{equation*}
+But as we are assuming $f : E \to F$ is a cofibration, Bousfield-Kan
+says that the categorical colimit of this diagram is weak equivalent
+to the homotopy push-out. Now let us apply $L^{\infty}$ to the
+diagram. $L^{\infty} f$ is still a cofibration, and the colimit of 
+\begin{equation*}
+  \xymatrix{
+    L^{\infty} E \ar[r] \ar[d] & L^{\infty}F \\
+    L^{\infty} pt & \\
+    }
+\end{equation*}
+is canonically isomorphic to
+$L^{\infty}\colim (pt \leftarrow E \to F) \cong L^{\infty}C(f)$.
+Now, since $L^{\infty}pt \cong pt$, we conclude that the cone of
+$L^{\infty} E \to L^{\infty} F$ is weak equivalent to
+$L^{\infty}C(f)$.
+
+Does the above suffice to establish lemma 3.3.9 in general for the
+functor $L^{\infty}$?
+
+Even without this lemma, I noticed that one can show that suspension
+spectra of (simplicially) $0$ connected pointed spaces are ($\bbA^1$)
+$0$ connected because $\Sigma^{\infty}L^{\infty} \calX$ is weak
+equivalent to $L^{\infty}\Sigma^{\infty}\calX$. The result follows by
+Corollary 3.2.5 of \cite{Mor03}.
+
+
+\begin{thebibliography}{OOOO}
+    \bibitem[Mor03]{Mor03} Morel, Fabien, {\it An introduction to $\bbA^1$
+    homotopy theory}.
+
+%    \bibitem[Mor04]{Mor04} Morel, Fabien, {\it On the motivic $\pi_0$
+%    of the sphere spectrum}. NATO science series.
+
+%    \bibitem[Mor05]{Mor05} Morel, Fabien, {\it The stable $\bbA^1$
+%    connectivity theorems}. preprint (2004).
+
+\end{thebibliography}
+\end{document}

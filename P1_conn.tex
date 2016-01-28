@@ -300,11 +300,8 @@ accomplishes this by constructing another model category with homotopy
 category $\calH(k)$. 
 
 \begin{definition}
-  Let $\Spc^{\bbA^1}(k)$ denote the full subcategory of $\Spc(k)$
-  of $\bbA^1$ local spaces. The inclusion
-  $\Spc^{\bbA^1}(k) \to \Spc(k)$ is a left Quillen functor with
-  left adjoint $L^{\infty}$. See \cite[Proposition 3.2.3]{Mor05} for
-  the construction. 
+  Let $\Spc^{\bbA^1}(k)$ denote the full subcategory of $\Spc(k)$ of
+  $\bbA^1$ local spaces. 
 \end{definition}
 
 \begin{proposition}
@@ -477,13 +474,11 @@ equivalences.
 
 \begin{remark}
   Let $\Spt^{S^1,\bbA^1}(k)$ denote the full subcategory of
-  $\Spt^{S^1}(k)$ consisting of $\bbA^1$-local spectra. The inclusion
-  $\Spt^{S^1, \bbA^1}(k) \to \Spt^{S^1}(k)$ has a left adjoint
-  $L^{\infty}$ which has a similar construction as was considered for
-  spaces. This adjunction is indeed a Quillen functor, and so just as
-  in the unstable setting, we may identify the stable $\bbA^1$
-  homotopy category with the homotopy category of the $\bbA^1$-local
-  $S^1$ spectra. See \cite[\S4.2]{Mor05} for details.
+  $\Spt^{S^1}(k)$ consisting of $\bbA^1$-local spectra.  There is a
+  functor $L^{\infty}$ on the level of homotopy categories, which
+  sends a spectrum $E$ to an $\bbA^1$-local spectrum
+  $L^{\infty}E$. The construction of $L^{\infty}$ is similar to the
+  one given for spaces. 
 
   % The functor $L^{\infty} : \Spt_s(k) \to \Spt_s^{\bbA^1loc}(k)$ is
   % left adjoint to the inclusion functor, and is a left Quillen
@@ -500,7 +495,7 @@ equivalences.
   Here we consider the model for $\SH^{S^1}(k)$ given by Bousfield
   localization, then translate to the category of $\bbA^1$ local
   spectra using $L^{\infty}$. The second equality follows from the
-  Quillen adjunction $\Spt^{S^1,\bbA^1}(k) \hookrightarrow \Spt^{S^1}(k)$.
+  adjunction $\SH^{S^1}(k) \to \SH_s^{S^1}(k)$.
 
   If we assume $E$ is cofibrant and $F$ is fibrant, we get the formula
   \begin{equation*}
@@ -669,8 +664,7 @@ equivalences.
 \subsection{Connectivity results}
 
 \begin{proposition}\cite[Lemma4.2.4]{Mor03}
-  The functor
-  $L^{\infty} : \Spt^{S^1}(k) \to \Spt^{S^1,\bbA^1}(k)$
+  The functor $L^{\infty} : \SH_s^{S^1}(k) \to \SH^{S^1,\bbA^1}(k)$
   identifies the $\bbA^1$-localized $S^1$ stable homotopy category
   with the homotopy category of $\bbA^1$-local $S^1$ spectra.
 \end{proposition}
